@@ -77,6 +77,6 @@ Our entertainment platform is a one-stop-shop for movie buffs, TV show enthusias
 ## GUI
 
 
-![alt text for screen readers](/EntertainMate.png "Text to show on mouseover").
+![alt text for screen readers](/EntertainMate.png "Text to show on mouseover")
 
 Figma prototype: https://www.figma.com/proto/X9Yex7akE50PWjZ4Z4rC6r/IMDB-CLone?node-id=1%3A2&scaling=scale-down&page-id=0%3A1
