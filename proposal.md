@@ -22,17 +22,16 @@ Our entertainment platform is a one-stop-shop for movie buffs, TV show enthusias
 
 ## Project Feature Table
 
-| Num | Name      | Description                     | End    | Deliverable | Who |
-| --- | --------- | ------------------------------- | ------ | ----------- | --- |
-| 1   | Login     | userLogin                       | server | yes         |     |
-| 2   | Feature 2 | movie search                    | server | yes         |     |
-| 3   | Feature 3 | artist search                   | server | yes         |     |
-| 4   | Feature 4 | all movie viewer                | client | yes         |     |
-| 5   | Feature 5 | allow users to save movies list | client | yes         |     |
-| 6   | Feature 2 | live chat support               | server | no          |     |
-| 7   | Feature 3 | parental control                | server | no          |     |
-| 8   | Feature 4 | advertisment                    | client | no          |     |
-| 9   | Feature 5 | Email newsletter subscription   | client | no          |     |
+| Num | Name                    | Description                                                                                                                                                    | End Date | Deliverable | Who      |
+| --- | ----------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- | ----------- | -------- |
+| 1   | Movie Database          | Create a database to store movie and TV show information, including ratings, cast                                                                              | server   | yes         | member 1 |
+| 2   | Search Engine           | Implement a search engine that can search through the movie database based on user input                                                                       | server   | yes         | member 2 |
+| 3   | User Reviews Database   | Create a database to store user reviews and ratings                                                                                                            | server   | yes         | member 1 |
+| 4   | User Authentication     | Implement user authentication to ensure only registered users can leave reviews and save movies                                                                | server   | yes         | member 1 |
+| 5   | Content Moderation      | Implement a system to moderate user reviews and prevent spam and inappropriate content                                                                         | server   | yes         | member 2 |
+| 6   | API Integration         | Integrate with third-party APIs to access additional movie and TV show data                                                                                    | server   | yes         | member 2 |
+| 7   | Scalability             | Design the system to be scalable, allowing for additional features and increased traffic                                                                       | server   | yes         | member 1 |
+| 8   | Location-based services | This feature will allow users to find the nearest movie theater or streaming platform to watch their desired movie or TV show based on their current location. | server   | yes         | member 2 |
 
 ---
 
