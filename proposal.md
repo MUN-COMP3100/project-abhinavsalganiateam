@@ -63,14 +63,14 @@ Our entertainment platform is a one-stop-shop for movie buffs, TV show enthusias
 
 | Num | Name                               | Description                                                                                                                               | End    | Deliverable | Who |
 | --- | ---------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------- | ------ | ----------- | --- |
-| 1   | Recommendations                    | Generate personalized recommendations based on user watch history and preferences.                                                        | client | No          |     |
-| 2   | Virtual watch parties              | Allow users to host virtual watch parties with friends and family.                                                                        | client | No          |     |
-| 3   | Notifications                      | Implement a notification system that sends updates and reminders to users about upcoming releases, new shows, and events.                 | client | No          |     |
-| 4   | User feedback                      | Provide a feedback system that allows users to report bugs, suggest improvements, and give general feedback to help improve the platform. | client | No          |     |
-| 5   | Personalized movie recommendations | Use machine learning algorithms to generate personalized movie recommendations based on user behavior and preferences.                    | client | No          |     |
-| 6   | Online ticket booking              | Integration with online ticket booking platforms will be implemented for added convenience.                                               | client | No          |     |
-| 7   | Streaming player                   | Develop a streaming player that supports high-quality video playback with options for captions, language settings, and playback speed.    | client | No          |     |
-| 8   | Social features                    | Integrate social features such as comments, ratings, and reviews to encourage community engagement and facilitate discussion.             | client | No          |     |
+| 1   | Recommendations                    | Generate personalized recommendations based on user watch history and preferences.                                                        | client | No/maybe    |     |
+| 2   | Virtual watch parties              | Allow users to host virtual watch parties with friends and family.                                                                        | client | No/maybe    |     |
+| 3   | Notifications                      | Implement a notification system that sends updates and reminders to users about upcoming releases, new shows, and events.                 | client | No/maybe    |     |
+| 4   | User feedback                      | Provide a feedback system that allows users to report bugs, suggest improvements, and give general feedback to help improve the platform. | client | No/maybe    |     |
+| 5   | Personalized movie recommendations | Use machine learning algorithms to generate personalized movie recommendations based on user behavior and preferences.                    | client | No/maybe    |     |
+| 6   | Online ticket booking              | Integration with online ticket booking platforms will be implemented for added convenience.                                               | client | No/maybe    |     |
+| 7   | Streaming player                   | Develop a streaming player that supports high-quality video playback with options for captions, language settings, and playback speed.    | client | No/maybe    |     |
+| 8   | Social features                    | Integrate social features such as comments, ratings, and reviews to encourage community engagement and facilitate discussion.             | client | No/maybe    |     |
 
 --
 
