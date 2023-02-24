@@ -74,6 +74,4 @@ Our entertainment platform is a one-stop-shop for movie buffs, TV show enthusias
 | 7   | Streaming player                   | Develop a streaming player that supports high-quality video playback with options for captions, language settings, and playback speed.    | client | No          | member 1 |
 | 8   | Social features                    | Integrate social features such as comments, ratings, and reviews to encourage community engagement and facilitate discussion.             | client | No          | member 1 |
 
---
-
 ## Descriptio2
