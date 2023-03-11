@@ -6,7 +6,7 @@
 
 Implement six of the server-side features of your project part 1 proposal. You may substitute different features if you wish by updating the feature table from the proposal document.
 
-Include the following in your server-side submission:
+### Include the following in your server-side submission:
 
 Do not remove the proposal documents or other elements of your first submission from the project repository.
 
