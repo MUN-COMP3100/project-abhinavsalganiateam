@@ -1,5 +1,4 @@
 import { getDb } from "../Utils/db.js";
-import { Movie } from "./movieDTO.js";
 
 async function get_movies() {
   let db = await getDb();
@@ -10,6 +9,7 @@ export class MovieBusiness {
   async add_movie(movie) {
     try {
       let collection = await get_movies();
+
       let result = await collection.insertOne(movie);
       return result;
     } catch (err) {
