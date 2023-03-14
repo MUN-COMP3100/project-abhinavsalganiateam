@@ -2,7 +2,7 @@ import { getDb } from "../Utils/db.js";
 
 async function get_movies() {
   let db = await getDb();
-  return await db.collection("canada");
+  return await db.collection("movies");
 }
 
 export class MovieBusiness {

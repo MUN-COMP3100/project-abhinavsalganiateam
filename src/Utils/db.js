@@ -11,8 +11,8 @@ async function connectToDB() {
     // Connect the client to the server
     await client.connect();
     // Our db name is going to be contacts-db
-    db = await client.db("Imdb");
-    console.log("Connected successfully to mongoDB database Imdb ");
+    db = await client.db("IMDB");
+    console.log("Connected successfully to mongoDB database IMDB ");
   } catch (err) {
     throw err;
   }

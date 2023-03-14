@@ -1,7 +1,7 @@
 import { MovieBusiness } from "../Models/movieBusiness";
 import { Movie } from "../Models/movieDTO";
 
-export async function GetAll(req, res) {
+export async function getAll(res) {
   let movies = await MovieBusiness.getAll();
   res.json(movies);
 }
