@@ -10,6 +10,7 @@ npm run setup
 
 ```bash
 mongoimport --db=IMDB --type=csv --headerline --collection=movies movie.csv
+mongoimport --db=IMDB --type=csv --headerline --collection=users userReview.csv
 ```
 
 ## 3. Run the app

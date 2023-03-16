@@ -1,4 +1,4 @@
-export class UserDTO {
+export class UserDAO {
   constructor(userid, name, email, password, role) {
     this.userid = userid;
     this.name = name;

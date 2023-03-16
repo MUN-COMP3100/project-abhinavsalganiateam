@@ -5,7 +5,7 @@ const port = 3000;
 app.use(json()); // support json encoded bodies
 app.use(urlencoded({ extended: true })); //incoming objects are strings or arrays
 
-import { getAll, GetMovie, AddMovie, GetMovieByDirector, GetMovieByGenre } from "./controller/movieController.js";
+import { getAll, GetMovie, AddMovie, GetMovieByDirector, GetMovieByGenre, DeleteMovie } from "./controller/movieController.js";
 import { connectToDB, closeDBConnection } from "./utils/db.mjs";
 
 var server;
@@ -16,12 +16,29 @@ async function createServer() {
     // starts correctly. Therefore, let's wait for
     // mongo to connect
     await connectToDB();
-    // contacts resource paths
+    // movie resource paths
     app.get("/movie", getAll);
     app.get("/movie/:name", GetMovie);
     app.post("/movie", AddMovie);
     app.get("/movie/genre/:genre", GetMovieByGenre);
     app.get("/director/:director", GetMovieByDirector);
+    app.delete("/movie/:name", DeleteMovie);
+
+    // user resource paths
+    /* app.get("/user", getAll);
+    app.get("/user/:name", GetMovie);
+    app.post("/user", AddMovie);
+    app.get("/user/id", GetMovieByGenre);
+    app.get("/director/:director", GetMovieByDirector);
+    app.delete("/movie/:name", DeleteMovie); */
+
+    //user Review resource paths
+    /* app.get("/userReview", getAll);
+    app.get("/userReview/:name", GetMovie);
+    app.post("/userReview", AddMovie);
+    app.get("/userReview/id", GetMovieByGenre);
+    app.get("/director/:director", GetMovieByDirector);
+    app.delete("/movie/:name", DeleteMovie); */
 
     // start the server
     server = app.listen(port, () => {
