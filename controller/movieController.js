@@ -1,21 +1,16 @@
-import { MovieBusiness } from "../Models/movieBusiness";
-import { Movie } from "../Models/movieDTO";
+import { MovieBusiness } from "./../model/movieBusiness.js";
+import { movieDTO } from "./../model/movieDTO.js";
 
-export async function getAll(res) {
-  let movies = await MovieBusiness.getAll();
-  res.json(movies);
+export async function getAll(req, res) {
+  let objs = await MovieBusiness.getAll();
+  console.log(objs.length + " item(s) sent.");
+  res.send(objs);
 }
 
 export async function GetMovie(req, res) {
-  let id = req.params.id;
-  let movie = await MovieBusiness.get_movie(id);
-  res.json(movie);
-}
-
-export async function GetMovieByTitle(req, res) {
-  let title = req.params.title;
-  let movie = await MovieBusiness.get_movie_by_title(title);
-  res.json(movie);
+  let name = req.params.name;
+  let movie = await MovieBusiness.get_movie(name);
+  res.send(movie);
 }
 
 export async function GetMovieByYear(req, res) {
@@ -27,23 +22,23 @@ export async function GetMovieByYear(req, res) {
 export async function GetMovieByGenre(req, res) {
   let genre = req.params.genre;
   let movie = await MovieBusiness.get_movie_by_genre(genre);
-  res.json(movie);
+  res.sned(movie);
 }
 
 export async function GetMovieByDirector(req, res) {
   let director = req.params.director;
   let movie = await MovieBusiness.get_movie_by_director(director);
-  res.json(movie);
+  res.send(movie);
 }
 
 export async function GetMovieByActor(req, res) {
   let actor = req.params.actor;
   let movie = await MovieBusiness.get_movie_by_actor(actor);
-  res.json(movie);
+  res.send(movie);
 }
 
 export async function AddMovie(req, res) {
-  let movie = new Movie(
+  let movie = new movieDTO(
     req.body.id,
     req.body.title,
     req.body.description,

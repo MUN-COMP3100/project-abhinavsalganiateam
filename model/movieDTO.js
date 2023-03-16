@@ -1,4 +1,4 @@
-class movieDTO {
+export class movieDTO {
   constructor(id, title, description, genre, duration, releaseDate, rating, image) {
     this.id = id;
     this.title = title;
@@ -91,5 +91,3 @@ class movieDTO {
     };
   }
 }
-
-module.exports = { movieDTO };

@@ -1,4 +1,4 @@
-import { getDb } from "../Utils/db.js.js";
+import { getDb } from "./../utils/db.mjs";
 
 async function get_movies() {
   let db = await getDb();
@@ -23,39 +23,34 @@ export class MovieBusiness {
     return objs;
   }
 
-  static async get_movie(id) {
+  static async get_movie(name) {
     let collection = await get_movies();
-    let objs = await collection.find({ id: id }).toArray();
-    return objs;
-  }
-
-  static async get_movie_by_title(title) {
-    let collection = await get_movies();
-    let objs = await collection.find({ title: title }).toArray();
+    let objs = await collection.find({ movie_title: name }).toArray();
     return objs;
   }
 
   static async get_movie_by_year(year) {
     let collection = await get_movies();
-    let objs = await collection.find({ year: year }).toArray();
+    let objs = await collection.find({ title_year: year }).toArray();
     return objs;
   }
 
   static async get_movie_by_genre(genre) {
     let collection = await get_movies();
-    let objs = await collection.find({ genre: genre }).toArray();
+    let objs = await collection.find({ genres: genre }).toArray();
+    // console.log(objs);
     return objs;
   }
 
   static async get_movie_by_director(director) {
     let collection = await get_movies();
-    let objs = await collection.find({ director: director }).toArray();
+    let objs = await collection.find({ director_name: director }).toArray();
     return objs;
   }
 
   static async get_movie_by_actor(actor) {
     let collection = await get_movies();
-    let objs = await collection.find({ actor: actor }).toArray();
+    let objs = await collection.find({ actor_1_name: actor }).toArray();
     return objs;
   }
 }
