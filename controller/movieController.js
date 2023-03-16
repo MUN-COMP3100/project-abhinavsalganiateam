@@ -1,7 +1,7 @@
 import { MovieBusiness } from "../model/business/movieBusiness.js";
 import { movieDAO } from "../model/DAO/movieDAO.js";
 
-export async function getAll(req, res) {
+export async function getAllMovies(req, res) {
   let objs = await MovieBusiness.getAll();
   console.log(objs.length + " item(s) sent.");
   res.send(objs);

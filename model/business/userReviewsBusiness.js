@@ -38,9 +38,9 @@ export class userReviewBusiness {
     let objs = await collection.find({ userid: userid }).toArray();
   }
 
-  static async getReviewByMovie(movieid) {
+  static async getReviewByMovie(title) {
     let collection = await getCollection();
-    let objs = await collection.find({ movieid: movieid }).toArray();
+    let objs = await collection.find({ movie_title: title }).toArray();
     return objs;
   }
 
@@ -53,11 +53,11 @@ export class userReviewBusiness {
     return objs;
   }
 
-  static async deleteReview(Review) {
+  static async deleteReview(userId, movieTitle) {
     let collection = await getCollection();
     let objs = await collection.deleteOne({
-      userid: Review.userid,
-      movieid: Review.movieid,
+      userid: userId,
+      movie_title: movieTitle,
     });
     return objs;
   }

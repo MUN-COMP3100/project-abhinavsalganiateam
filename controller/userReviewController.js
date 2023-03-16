@@ -1,7 +1,7 @@
 import { UserReviewDTO } from "../model/DAO/userReviewDAO.js";
 import { userReviewBusiness } from "../model/business/userReviewsBusiness.js";
 
-export async function getAll(req, res) {
+export async function getAllReviews(req, res) {
   let objs = await userReviewBusiness.getAll();
   console.log(objs.length + " item(s) sent.");
   res.send(objs);
@@ -20,19 +20,20 @@ export async function GetReviewByUser(req, res) {
 }
 
 export async function AddReview(req, res) {
-  let review = new UserReviewDTO(req.body.userId, req.body.movie_title, req.body.review, req.body.rating);
+  let review = new UserReviewDTO(req.body.userid, req.body.movie_title, req.body.review, req.body.rating);
   let result = await userReviewBusiness.addReview(review);
   res.json(result);
 }
 
 export async function UpdateReview(req, res) {
-  let review = new UserReviewDTO(req.body.userId, req.body.movie_title, req.body.review, req.body.rating);
+  let review = new UserReviewDTO(req.body.userid, req.body.movie_title, req.body.review, req.body.rating);
   let result = await userReviewBusiness.updateReview(review);
   res.json(result);
 }
 
 export async function DeleteReview(req, res) {
-  let review = new UserReviewDTO(req.body.userId, req.body.movie_title, req.body.review, req.body.rating);
-  let result = await userReviewBusiness.deleteReview(review);
+  let userId = req.params.userId;
+  let movie_title = req.params.movie_title;
+  let result = await userReviewBusiness.deleteReview(userId, movie_title);
   res.json(result);
 }

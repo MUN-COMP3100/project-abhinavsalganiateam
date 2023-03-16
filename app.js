@@ -5,8 +5,17 @@ const port = 3000;
 app.use(json()); // support json encoded bodies
 app.use(urlencoded({ extended: true })); //incoming objects are strings or arrays
 
-import { getAll, GetMovie, AddMovie, GetMovieByDirector, GetMovieByGenre, DeleteMovie } from "./controller/movieController.js";
+import { getAllMovies, GetMovie, AddMovie, GetMovieByDirector, GetMovieByGenre, DeleteMovie } from "./controller/movieController.js";
 import { connectToDB, closeDBConnection } from "./utils/db.mjs";
+
+import {
+  getAllReviews,
+  GetReviewByMovie,
+  GetReviewByUser,
+  AddReview,
+  UpdateReview,
+  DeleteReview,
+} from "./controller/userReviewController.js";
 
 var server;
 
@@ -17,7 +26,7 @@ async function createServer() {
     // mongo to connect
     await connectToDB();
     // movie resource paths
-    app.get("/movie", getAll);
+    app.get("/movie", getAllMovies);
     app.get("/movie/:name", GetMovie);
     app.post("/movie", AddMovie);
     app.get("/movie/genre/:genre", GetMovieByGenre);
@@ -33,12 +42,12 @@ async function createServer() {
     app.delete("/movie/:name", DeleteMovie); */
 
     //user Review resource paths
-    /* app.get("/userReview", getAll);
-    app.get("/userReview/:name", GetMovie);
-    app.post("/userReview", AddMovie);
-    app.get("/userReview/id", GetMovieByGenre);
-    app.get("/director/:director", GetMovieByDirector);
-    app.delete("/movie/:name", DeleteMovie); */
+    app.get("/userReview", getAllReviews);
+    app.get("/userReview/:userid", GetReviewByMovie);
+    app.post("/userReview", AddReview);
+    app.get("/userReview/user/:id", GetReviewByUser);
+    app.put("/userReview/:name", UpdateReview);
+    app.delete("/userReview/:userid:movietitle", DeleteReview);
 
     // start the server
     server = app.listen(port, () => {

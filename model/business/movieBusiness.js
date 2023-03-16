@@ -24,7 +24,7 @@ export class MovieBusiness {
 
   static async get_movie(name) {
     let collection = await get_movies();
-    let objs = await collection.find({ movieTitle: name }).toArray();
+    let objs = await collection.find({ movie_title: name }).toArray();
     return objs;
   }
 
