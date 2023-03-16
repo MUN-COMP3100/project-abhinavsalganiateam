@@ -1,4 +1,4 @@
-import { getDb } from "../Utils/db.js";
+import { getDb } from "../Utils/db.js.js";
 
 async function get_movies() {
   let db = await getDb();

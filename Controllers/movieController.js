@@ -77,4 +77,3 @@ export async function DeleteMovie(req, res) {
   let result = await MovieBusiness.delete_movie(id);
   res.json(result);
 }
-
