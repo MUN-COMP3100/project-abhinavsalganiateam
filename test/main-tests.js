@@ -12,14 +12,10 @@ const instance = create({
     headers: {'content-type': 'application/json'}
 });
 
-describe('Contacts App v4 - Tests with Mocha', function(){
-    describe('Test Models', function(){
-        describe('Contact', function(){
-            let cname = 'Amilcar Soares';
-            let cemail = 'amilcarsj@mun.ca';
-            let ctel = '709-456-7891'
-            let caddress = '230 Elizabeth Ave, St. John\'s, Newfoundland'
-            var contact = new Contact(cname, cemail, ctel, caddress);       
+describe('IMDB Clone app - testing with Mocha', function(){
+    /* describe('Test Models', function(){
+        describe('add movie ', function(){
+                 
 
             it('Test if user is invalid function (Invalid Email)', async function(){
                 let c = new Contact(cname, 'amilcarsj@mun@ca.13', ctel, caddress);
@@ -30,9 +26,9 @@ describe('Contacts App v4 - Tests with Mocha', function(){
                 strictEqual(await validate_fields(c.name, c.email, c.tel, c.address), false);
             });
         });
-    });
+    }); */
     describe('Test API calls', function(){
-        describe('Contacts', async function(){            
+        describe('Movies ', async function(){            
             it('Fail 1. POST - Test invalid name in the object', async function(){
                 let data = {
                     name: '12Asj/@3_', 

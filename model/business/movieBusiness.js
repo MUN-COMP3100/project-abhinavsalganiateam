@@ -10,7 +10,7 @@ export class MovieBusiness {
     try {
       let collection = await get_movies();
       let result = await collection.insertOne(movie);
-      return result;
+      return "Movie added successfully";
     } catch (err) {
       throw err;
     }

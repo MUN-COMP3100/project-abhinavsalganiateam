@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "mocha",
-    "setup":"npm install express mocha mongodb"
+    "setup":"npm install express mocha mongodb",
+    "start": "node app.js"
   },
   "author": "amilcarsj",
   "license": "ISC",
