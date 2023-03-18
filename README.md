@@ -8,9 +8,7 @@ mongoimport --db=IMDB --type=csv --headerline --collection=users userReview.csv
 
 ## to access the online database
 
-```bash
 simply change the import statement in app.js for the database to the following dbOnline.mjs
-```
 
 ## To run the application
 
