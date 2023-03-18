@@ -5,6 +5,7 @@ mongoimport --db=IMDB --type=csv --headerline --collection=movies movie.csv
 mongoimport --db=IMDB --type=csv --headerline --collection=users userReview.csv
 
 ```
+
 ## to access the online database
 
 ```bash
@@ -24,5 +25,10 @@ npm start
 npm test
 ```
 
+## Attributions
 
+I have used the following resources to help me with this project:
 
+1. [express](https://expressjs.com/)
+2. [mocha](https://mochajs.org/)
+3. contacts-v4 app as the base for the project [contacts-v4](http://www.cs.mun.ca/~brown/3100/Soares/Week5/contacts-app-v4.zip)
