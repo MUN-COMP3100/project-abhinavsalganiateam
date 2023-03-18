@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "mocha"
+    "test": "mocha",
+    "setup":"npm install express mocha mongodb"
   },
   "author": "amilcarsj",
   "license": "ISC",
