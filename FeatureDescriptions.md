@@ -55,16 +55,19 @@ Dependencies: This component depends on the getDb function from utils/db.mjs to 
 
 Status: The implementation of this feature is partially complete. The component provides methods to add, get, update, and delete reviews, and to get reviews by movie or user.
 
-## Name of the feature: Location Based API
+## Name of the feature: Location Based Movie-Showtimes
 
-Description: This feature will allow users to find the nearest movie theater or streaming platform to watch their desired movie or TV show based on their current location. Users will be able to enter their current location or allow the app to access their device's GPS location to find the closest available options.
+Description: LocationController.js is a feature that uses Serp API to get movie timings, OpenCage to get city and geoLocation, and files called getCity and movieUtils to display movie showtimes for a given location.
 
-Implementation strategy: To implement this feature, we will use a third-party location-based API service, such as Google Maps API or OpenStreetMap API, to retrieve the user's current location and search for nearby movie theaters or streaming platforms. We will also need to integrate this feature with the movie and TV show database to retrieve relevant information about the available options.
+Implementation strategy: The LocationController.js feature uses the Axios package to make HTTP requests to the Serp API and OpenCage API. It also imports several modules, including getCity and movieUtils, to help with data manipulation and display.
 
-Dependencies: This feature will depend on the movie and TV show database module to retrieve information about available movies and TV shows, as well as a third-party location-based API service to retrieve the user's current location and search for nearby movie theaters or streaming platforms.
+The feature first retrieves the user's current location using the geolocation API. If the user denies access to their location, it will default to a predetermined location. It then uses the OpenCage API to get the user's city and geoLocation based on the coordinates.
 
-State of implementation: This feature has not been implemented yet. Further development and testing will be required to fully implement and integrate this feature into the app.
+Next, the feature uses the getCity module to retrieve movie data from the Serp API based on the user's city. The movie data is then processed using the movieUtils module to extract the movie showtimes.
 
+Dependencies: LocationController.js depends on the geolocation API, Serp API, OpenCage API, Axios package, and the getCity and movieUtils modules.
+
+State of implementation: The feature is complete and working as intended.
 
 ## Name of the feature: Content Moderation
 
