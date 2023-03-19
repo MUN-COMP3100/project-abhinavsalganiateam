@@ -6,6 +6,7 @@ app.use(json()); // support json encoded bodies
 app.use(urlencoded({ extended: true })); //incoming objects are strings or arrays
 
 import { getAllMovies, GetMovie, AddMovie, GetMovieByDirector, GetMovieByGenre, DeleteMovie } from "./controller/movieController.js";
+import { get_user, get_user_by_email, getall_users, update_user, delete_user, adduser } from "./controller/userController.js";
 import { searchController } from "./controller/searchController.js";
 import { connectToDB, closeDBConnection } from "./utils/db.mjs";
 
@@ -35,20 +36,20 @@ async function createServer() {
     app.delete("/movie/:name", DeleteMovie);
 
     // user resource paths
-    /* app.get("/user", getAll);
-    app.get("/user/:name", GetMovie);
-    app.post("/user", AddMovie);
-    app.get("/user/id", GetMovieByGenre);
-    app.get("/director/:director", GetMovieByDirector);
-    app.delete("/movie/:name", DeleteMovie); */
+    app.get("/user", getall_users);
+    app.get("/user/:id", get_user);
+    app.post("/user", adduser);
+    app.get("/user/:email", get_user_by_email);
+    app.put("/user/:id", update_user);
+    app.delete("/user/:id", delete_user);
 
     //user Review resource paths
     app.get("/userReview", getAllReviews);
     app.get("/userReview/:userid", GetReviewByMovie);
     app.post("/userReview", AddReview);
     app.get("/userReview/user/:id", GetReviewByUser);
-    app.put("/userReview/:name", UpdateReview);
-    app.delete("/userReview/:userid:movietitle", DeleteReview);
+    app.put("/userReview/update", UpdateReview);
+    app.delete("/userReview/delete", DeleteReview);
     // app.get("/search", );
 
     // start the server
