@@ -35,3 +35,17 @@ export async function get_user_by_email(req, res) {
   let result = await UserBusiness.get_user_by_email(email);
   res.json(result);
 }
+
+export async function login(req, res) {
+  let email = req.body.email;
+  let password = req.body.password;
+  let result = await UserBusiness.login(email, password);
+  res.json(result);
+}
+
+export async function validate_userid(req, res) {
+  let userid = req.params.userid;
+  let result = await UserBusiness.validate_userid(userid);
+  res.json(result);
+}
+

@@ -1,5 +1,6 @@
 let validator = require("validator");
 
+
 let _validate_name = (name) => {
   return new Promise((resolve, reject) => {
     name = name.split(" ").join(""); //Removing blanks
@@ -23,16 +24,7 @@ let _validate_email = (email) => {
   });
 };
 
-let _validate_phone = (phone) => {
-  return new Promise((resolve, reject) => {
-    let is_valid = validator.isMobilePhone(phone);
-    if (is_valid) {
-      resolve("The phone is valid.");
-    } else {
-      reject("The phone is invalid.");
-    }
-  });
-};
+
 
 let _validate_password = (password) => {
   return new Promise((resolve, reject) => {

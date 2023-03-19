@@ -11,7 +11,25 @@ export class UserBusiness {
   static async add_user(user) {
     try {
       let collection = await getCollection();
-      let result = await collection.insertOne(user);
+      if (user.userid == null || user.userid == "") {
+        throw "User ID is required.";
+      }
+      if (user.name == null || user.name == "") {
+        throw "Name is required.";
+      }
+      if (user.email == null || user.email == "") {
+        throw "Email is required.";
+      }
+      if (user.password == null || user.password == "") {
+        throw "Password is required.";
+      }
+
+      let validate = await this.validate_userid(user.userid);
+      if (validate) {
+        throw "User ID already exists.";
+      } else {
+        let result = await collection.insertOne(user);
+      }
       return result;
     } catch (err) {
       throw err;
@@ -48,5 +66,23 @@ export class UserBusiness {
     let collection = await getCollection();
     let objs = await collection.deleteOne({ userid: userId });
     return objs;
+  }
+
+  static async login(email, password) {
+    let collection = await getCollection();
+    let objs = await collection.find({ email: email, password: password }).toArray();
+    if (objs.length > 0) {
+      return true;
+    }
+    return false;
+  }
+
+  static async validate_userid(userid) {
+    let collection = await getCollection();
+    let objs = await collection.find({ userid: userid }).toArray();
+    if (objs.length > 0) {
+      return true;
+    }
+    return false;
   }
 }
