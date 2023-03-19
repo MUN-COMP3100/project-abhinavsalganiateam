@@ -1,8 +1,6 @@
 export class LocationDAO {
-    constructor(city, country, latitude, longitude) {
+    constructor(city, country) {
       this.city = city;
       this.country = country;
-      this.latitude = latitude;
-      this.longitude = longitude;
     }
 }

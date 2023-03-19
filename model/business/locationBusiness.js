@@ -36,10 +36,11 @@ export class LocationBusiness {
 
   static async searchLocation(query) {
     const regex = new RegExp(query, "i"); // create case-insensitive regex from search query
-    const locations = await Location.find({
-      $or: [{ name: regex }, { city: regex }, { state: regex }], // search in name, city, and state fields
-    });
+    const collection = await get_locations();
+    const locations = await collection.find({
+      $or: [{ location_name: regex }, { city: regex }, { state: regex }], // search in location_name, city, and state fields
+    }).toArray();
     return locations;
   }
-
+  
 }

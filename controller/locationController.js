@@ -1,25 +1,48 @@
-import fetch from 'node-fetch';
+import { getCity } from './cityUtils.js';
+import { getMovieShowTimings } from './movieUtils.js';
 
-const API_KEY = 'apikey';
-const BASE_URL = 'https://serpapi.com/showtimes-results';
+async function getLocationFromBrowser() {
+  if (navigator.geolocation) {
+    return new Promise((resolve, reject) => {
+      navigator.geolocation.getCurrentPosition(
+        async (position) => {
+          const { latitude, longitude } = position.coords;
+          try {
+            const city = await getCity(latitude, longitude);
+            resolve(city);
+          } catch (error) {
+            reject(error);
+          }
+        },
+        (error) => {
+          reject(error);
+        }
+      );
+    });
+  } else {
+    throw new Error('Geolocation is not supported by this browser.');
+  }
+}
 
-export const getMoviesByLocation = async (location) => {
-  const url = `${BASE_URL}?api_key=${API_KEY}&location=${location}`;
-  const response = await fetch(url);
-  const data = await response.json();
-  const movies = data.movies.map((movie) => {
-    return {
-      title: movie.title,
-      release_date: movie.release_date,
-      rating: movie.rating,
-      theater: movie.theater.name,
-      showtimes: movie.showtimes.map((showtime) => {
-        return {
-          time: showtime.time,
-          ticket_uri: showtime.ticket_uri
-        };
-      })
-    };
-  });
-  return movies;
-};
+async function displayMovieShowTimings(movieTitle) {
+  try {
+    const city = await getLocationFromBrowser();
+    const showtimes = await getMovieShowTimings(city, movieTitle);
+    // Display the showtimes on the webpage
+    const showtimesElement = document.getElementById('movie-showtimes');
+    showtimesElement.innerHTML = `<h3>Showtimes for ${movieTitle} in ${city}</h3><ul>`;
+    for (let i = 0; i < showtimes.length; i++) {
+      showtimesElement.innerHTML += `<li>${showtimes[i]}</li>`;
+    }
+    showtimesElement.innerHTML += `</ul>`;
+  } catch (error) {
+    console.error('Error:', error);
+  }
+}
+
+
+// Example usage
+/*const movieTitle = prompt('Enter the name of the movie:');
+displayMovieShowTimings(movieTitle);
+*/
+
