@@ -17,4 +17,4 @@ async function testMovieShowTimings() {
 }
 
 // Example usage
-testMovieShowTimings();
+// testMovieShowTimings();

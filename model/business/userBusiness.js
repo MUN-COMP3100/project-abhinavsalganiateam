@@ -1,5 +1,5 @@
 import { UserDAO } from "../DAO/userDAO.js";
-import { connectToDB } from "../../utils/db.mjs";
+import { connectToDB,getDb } from "../../utils/db.mjs";
 
 async function getCollection() {
   let db = await getDb();
