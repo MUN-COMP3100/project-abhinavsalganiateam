@@ -12,7 +12,7 @@ export const searchController = async (req, res) => {
         results = await MovieBusiness.searchMovie(query);
         break;
       case "theater":
-        results = await MovieBusiness.searchTheater(query);
+        results = await MovieBusiness.searchMovie(query);
         break;
       default:
         results = [];
