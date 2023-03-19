@@ -6,6 +6,7 @@ app.use(json()); // support json encoded bodies
 app.use(urlencoded({ extended: true })); //incoming objects are strings or arrays
 
 import { getAllMovies, GetMovie, AddMovie, GetMovieByDirector, GetMovieByGenre, DeleteMovie } from "./controller/movieController.js";
+import { searchMovies } from "./controller/searchController.js";
 import { connectToDB, closeDBConnection } from "./utils/db.mjs";
 
 import {
@@ -48,6 +49,7 @@ async function createServer() {
     app.get("/userReview/user/:id", GetReviewByUser);
     app.put("/userReview/:name", UpdateReview);
     app.delete("/userReview/:userid:movietitle", DeleteReview);
+    app.get("/search", searchMovies);
 
     // start the server
     server = app.listen(port, () => {

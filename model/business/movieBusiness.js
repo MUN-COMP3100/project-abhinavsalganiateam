@@ -58,4 +58,13 @@ export class MovieBusiness {
     let objs = await collection.deleteOne({ movie_title: title });
     return objs;
   }
+
+  static async searchMovie(query) {
+    const regex = new RegExp(query, "i"); // create case-insensitive regex from search query
+    const movies = await Movie.find({
+      $or: [{ title: regex }, { director: regex }, { genre: regex }], // search in title, director, and genre fields
+    });
+    return movies;
+  }
+
 }
