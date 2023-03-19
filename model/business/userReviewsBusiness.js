@@ -36,6 +36,11 @@ export class userReviewBusiness {
   static async getReview(userid) {
     let collection = await getCollection();
     let objs = await collection.find({ userid: userid }).toArray();
+    if (objs.length > 0) {
+      return objs;
+    } else {
+      return "no reviews with this user id";
+    }
   }
 
   static async getReviewByMovie(title) {
@@ -44,10 +49,10 @@ export class userReviewBusiness {
     return objs;
   }
 
-  static async updateReview(Review) {
+  static async updateReview(Review, userid, movie_title) {
     let collection = await getCollection();
     let objs = await collection.updateOne(
-      { userid: Review.userid, movieid: Review.movieid },
+      { userid: userid, movieid: movie_title },
       { $set: { review: Review.review, rating: Review.rating } }
     );
     return objs;
@@ -55,10 +60,7 @@ export class userReviewBusiness {
 
   static async deleteReview(userId, movieTitle) {
     let collection = await getCollection();
-    let objs = await collection.deleteOne({
-      userid: userId,
-      movie_title: movieTitle,
-    });
+    let objs = collection.deleteOne({ userid: userId, movie_title: movieTitle });
     return objs;
   }
 }
