@@ -64,3 +64,16 @@ Implementation strategy: To implement this feature, we will use a third-party lo
 Dependencies: This feature will depend on the movie and TV show database module to retrieve information about available movies and TV shows, as well as a third-party location-based API service to retrieve the user's current location and search for nearby movie theaters or streaming platforms.
 
 State of implementation: This feature has not been implemented yet. Further development and testing will be required to fully implement and integrate this feature into the app.
+
+
+## Name of the feature: Content Moderation
+
+Description: This feature will allow the system to moderate user reviews and prevent spam and inappropriate content from being published on the platform. This will help maintain a high-quality user experience and prevent any potentially harmful content from being shared.
+
+Implementation strategy: The implementation strategy for this feature will involve using third-party services or libraries that provide content moderation and spam detection functionalities. These services will be integrated into the user review submission process, where they will analyze the content of the review and flag any potentially inappropriate or spammy content. The system will then either reject the review or send it to an admin for further review.
+
+Tools and imported packages and modules: Some of the tools and imported packages and modules that can be used to implement this feature include Google's Perspective API, Microsoft Azure's Content Moderator, Amazon Rekognition, and TensorFlow.js.
+
+Dependencies: This feature will depend on the user review management feature and the user authentication feature. The content moderation system will only moderate reviews submitted by authenticated users.
+
+State of the implementation: This feature is not yet implemented in the current version of the project. Further research and testing will be required to identify the most suitable content moderation service for the platform and integrate it into the system.
