@@ -52,5 +52,15 @@ The feature is fully implemented and working. Users can be created, retrieved, u
     Implementation: The feature is implemented using a combination of JavaScript and MongoDB. The UserReviewDTO class is used to define the structure of a user review. The userReviewBusiness class contains methods for adding, retrieving, updating, and deleting user reviews. The userReviewController class contains functions for handling HTTP requests related to user reviews. The userReviewBusiness component provides a set of static methods that interact with the MongoDB database using the getDb function from utils/db.mjs. The getCollection method returns the userReviews collection from the database and creates the collection if it does not exist. The addReview method inserts a new review into the collection, while getReview, getReviewByMovie, updateReview, and deleteReview retrieve, update, or delete reviews based on the provided criteria.
 
     Dependencies: This component depends on the getDb function from utils/db.mjs to establish a connection to the MongoDB database.
-    
+
     Status: The implementation of this feature is partially complete. The component provides methods to add, get, update, and delete reviews, and to get reviews by movie or user.
+
+## Name of the feature: Location Based API
+
+Description: This feature will allow users to find the nearest movie theater or streaming platform to watch their desired movie or TV show based on their current location. Users will be able to enter their current location or allow the app to access their device's GPS location to find the closest available options.
+
+Implementation strategy: To implement this feature, we will use a third-party location-based API service, such as Google Maps API or OpenStreetMap API, to retrieve the user's current location and search for nearby movie theaters or streaming platforms. We will also need to integrate this feature with the movie and TV show database to retrieve relevant information about the available options.
+
+Dependencies: This feature will depend on the movie and TV show database module to retrieve information about available movies and TV shows, as well as a third-party location-based API service to retrieve the user's current location and search for nearby movie theaters or streaming platforms.
+
+State of implementation: This feature has not been implemented yet. Further development and testing will be required to fully implement and integrate this feature into the app.
