@@ -31,3 +31,17 @@ Features/Project modules used or depends on:
 State of implementation:
 
 The implementation of this feature is not completed yet, as the movieBusiness.js file needs to be updated with the search function using Mongoose to search for movies based on user input. The searchController.js file also needs to be updated with the API endpoint for the search feature.
+
+### Feature Name: User Creation
+
+Description:
+This feature allows the creation of a new user with a unique user ID, name, email, password, and role. The user's information is stored in a database using the UserDAO class. The user's input is validated using the validate-fields module before being passed on to the UserBusiness module, which performs the actual creation of the user.
+
+Implementation:
+The UserDAO class defines the structure of a user and provides getters and setters for each attribute. The UserBusiness module has static methods for adding, retrieving, updating, and deleting users from the database. These methods use the UserDAO class to interact with the database. The validate-fields module validates user input to ensure that the name, email, phone, and address fields are valid. The app.js file imports the UserBusiness module and calls its methods to create new users.
+
+Dependencies:
+This feature uses MongoDB to store user information and depends on the db.mjs module to connect to the database. The feature also uses the validate-fields module to validate user input.
+
+Status:
+The feature is fully implemented and working. Users can be created, retrieved, updated, and deleted from the database using the UserBusiness module. User input is validated using the validate-fields module before being added to the database.
