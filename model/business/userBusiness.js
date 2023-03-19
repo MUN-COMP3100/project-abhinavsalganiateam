@@ -1,5 +1,5 @@
 import { UserDAO } from "../DAO/userDAO.js";
-import { connectToDB,getDb } from "../../utils/db.mjs";
+import { connectToDB, getDb } from "../../utils/db.mjs";
 
 async function getCollection() {
   let db = await getDb();
@@ -11,25 +11,7 @@ export class UserBusiness {
   static async add_user(user) {
     try {
       let collection = await getCollection();
-      if (user.userid == null || user.userid == "") {
-        throw "User ID is required.";
-      }
-      if (user.name == null || user.name == "") {
-        throw "Name is required.";
-      }
-      if (user.email == null || user.email == "") {
-        throw "Email is required.";
-      }
-      if (user.password == null || user.password == "") {
-        throw "Password is required.";
-      }
-
-      let validate = await this.validate_userid(user.userid);
-      if (validate) {
-        throw "User ID already exists.";
-      } else {
-        let result = await collection.insertOne(user);
-      }
+      let result = await collection.insertOne(user);
       return result;
     } catch (err) {
       throw err;

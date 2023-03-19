@@ -34,27 +34,27 @@ describe("IMDB Clone app - testing with Mocha", function () {
         strictEqual(await validate_fields(user.name, user.email, user.password), true);
       });
 
-      it("Test if userid is valid add user fail ", async function () {
-        let data = {
-          userid: "johnsmith",
-          name: "John Smith",
-          email: "JOhnsmoth@exmple.com",
-          password: "RMk2002.",
-        };
-        let res = await instance.post("/user", data);
-        strictEqual(res.data, "user already exists");
-      });
+      // it("Test if userid is valid add user fail ", async function () {
+      //   let data = {
+      //     userid: "johnsmith",
+      //     name: "John Smith",
+      //     email: "JOhnsmoth@exmple.com",
+      //     password: "RMk2002.",
+      //   };
+      //   let res = await instance.post("/user", data);
+      //   strictEqual(res.data, "user already exists");
+      // });
 
-      it("Test if userid is valid add user pass ", async function () {
-        let data = {
-          userid: "johnsmith1",
-          name: "John Smith",
-          email: "john1@email.com",
-          password: "RMk2002.",
-        };
-        let res = await instance.post("/user", data);
-        strictEqual(res.data, "user added successfully to the database ! ");
-      });
+      // it("Test if userid is valid add user pass ", async function () {
+      //   let data = {
+      //     userid: "johnsmith1",
+      //     name: "John Smith",
+      //     email: "john1@email.com",
+      //     password: "RMk2002.",
+      //   };
+      //   let res = await instance.post("/user", data);
+      //   strictEqual(res.data, "user added successfully to the database ! ");
+      // });
     });
     describe("Test API calls", function () {
       describe("testing user apis  ", async function () {

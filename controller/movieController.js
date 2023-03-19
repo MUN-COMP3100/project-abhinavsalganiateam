@@ -38,7 +38,7 @@ export async function GetMovieByActor(req, res) {
 }
 
 export async function AddMovie(req, res) {
-  let movie = new movieDTO(
+  let movie = new movieDAO(
     req.body.color,
     req.body.director_name,
     req.body.duration,
