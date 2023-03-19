@@ -32,7 +32,7 @@ State of implementation:
 
 The implementation of this feature is not completed yet, as the movieBusiness.js file needs to be updated with the search function using Mongoose to search for movies based on user input. The searchController.js file also needs to be updated with the API endpoint for the search feature.
 
-### Feature Name: User Creation
+### Feature Name: User Creation and Authentication
 
 Description:
 This feature allows the creation of a new user with a unique user ID, name, email, password, and role. The user's information is stored in a database using the UserDAO class. The user's input is validated using the validate-fields module before being passed on to the UserBusiness module, which performs the actual creation of the user.
