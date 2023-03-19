@@ -47,13 +47,13 @@ Status:
 The feature is fully implemented and working. Users can be created, retrieved, updated, and deleted from the database using the UserBusiness module. User input is validated using the validate-fields module before being added to the database.
 
 ##     Name of the feature: User reviews management
-    Description: This feature provides functionality to manage user reviews in the application. It provides methods to add a new review, update an existing review, get all reviews, get reviews by movie, and get reviews by user.
+Description: This feature provides functionality to manage user reviews in the application. It provides methods to add a new review, update an existing review, get all reviews, get reviews by movie, and get reviews by user.
 
-    Implementation: The feature is implemented using a combination of JavaScript and MongoDB. The UserReviewDTO class is used to define the structure of a user review. The userReviewBusiness class contains methods for adding, retrieving, updating, and deleting user reviews. The userReviewController class contains functions for handling HTTP requests related to user reviews. The userReviewBusiness component provides a set of static methods that interact with the MongoDB database using the getDb function from utils/db.mjs. The getCollection method returns the userReviews collection from the database and creates the collection if it does not exist. The addReview method inserts a new review into the collection, while getReview, getReviewByMovie, updateReview, and deleteReview retrieve, update, or delete reviews based on the provided criteria.
+Implementation: The feature is implemented using a combination of JavaScript and MongoDB. The UserReviewDTO class is used to define the structure of a user review. The userReviewBusiness class contains methods for adding, retrieving, updating, and deleting user reviews. The userReviewController class contains functions for handling HTTP requests related to user reviews. The userReviewBusiness component provides a set of static methods that interact with the MongoDB database using the getDb function from utils/db.mjs. The getCollection method returns the userReviews collection from the database and creates the collection if it does not exist. The addReview method inserts a new review into the collection, while getReview, getReviewByMovie, updateReview, and deleteReview retrieve, update, or delete reviews based on the provided criteria.
 
-    Dependencies: This component depends on the getDb function from utils/db.mjs to establish a connection to the MongoDB database.
+Dependencies: This component depends on the getDb function from utils/db.mjs to establish a connection to the MongoDB database.
 
-    Status: The implementation of this feature is partially complete. The component provides methods to add, get, update, and delete reviews, and to get reviews by movie or user.
+Status: The implementation of this feature is partially complete. The component provides methods to add, get, update, and delete reviews, and to get reviews by movie or user.
 
 ## Name of the feature: Location Based API
 
