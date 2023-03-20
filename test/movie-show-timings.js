@@ -13,4 +13,4 @@ async function testDisplayMovieShowTimings() {
   }
   
   // Example usage
-  // testDisplayMovieShowTimings();
+  testDisplayMovieShowTimings();

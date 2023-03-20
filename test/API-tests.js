@@ -1,4 +1,4 @@
-import { getCity, getLocation, getMovieShowTimings } from ";
+import { getCity } from "../utils/getCity.js";
 async function testMovieShowTimings() {
   // Call the getCity function to get the city details
   const cityData = await getCity("New York");
@@ -18,4 +18,4 @@ async function testMovieShowTimings() {
 }
 
 // Example usage
-// testMovieShowTimings();
+testMovieShowTimings();
