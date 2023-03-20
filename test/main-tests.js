@@ -66,11 +66,12 @@ describe("IMDB Clone app - testing with Mocha", function () {
             password: "RMk2002.",
           };
           let res = await instance.post("/user", data);
-          strictEqual(res.data, "user added successfully to the database ! ");
+          strictEqual(res.data.acknowledged, true);
         });
 
         it("2. pass - get user ", async function () {
           let res = await instance.get("/user/johnsmith");
+          // console.log(res.data);
           strictEqual(res.data[0].userid, "johnsmith");
         });
 

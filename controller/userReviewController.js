@@ -27,7 +27,7 @@ export async function AddReview(req, res) {
 
 export async function UpdateReview(req, res) {
   let userid = req.query.userid;
-  let movie_title = req.qu.movie_title;
+  let movie_title = req.query.movie_title;
   let review = new UserReviewDTO(req.body.userid, req.body.movie_title, req.body.review, req.body.rating);
   let result = await userReviewBusiness.updateReview(review, userid, movie_title);
   res.json(result);

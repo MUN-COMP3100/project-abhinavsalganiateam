@@ -27,7 +27,11 @@ export class UserBusiness {
   static async get_user(userId) {
     let collection = await getCollection();
     let objs = await collection.find({ userid: userId }).toArray();
-    return objs;
+    if (objs.length > 0) {
+      return objs;
+    } else {
+      return "user not found";
+    }
   }
 
   static async get_user_by_email(email) {
@@ -35,11 +39,11 @@ export class UserBusiness {
     let objs = await collection.find({ email: email }).toArray();
   }
 
-  static async update_user(user) {
+  static async update_user(user, userId) {
     let collection = await getCollection();
     let objs = await collection.updateOne(
-      { userid: user.userid },
-      { $set: { name: user.userid, email: user.email, password: user.password, role: user.role } }
+      { userid: userId },
+      { $set: { name: user.name, email: user.email, password: user.password } }
     );
     return objs;
   }
