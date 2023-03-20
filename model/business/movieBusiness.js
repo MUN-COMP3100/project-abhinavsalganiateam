@@ -25,7 +25,10 @@ export class MovieBusiness {
   static async get_movie(name) {
     let collection = await get_movies();
     let objs = await collection.find({ movie_title: name }).toArray();
-    return objs;
+    if (objs.length > 0) {
+      return objs;
+    }
+    return "Movie not found";
   }
 
   static async get_movie_by_year(year) {
@@ -66,5 +69,4 @@ export class MovieBusiness {
     });
     return movies;
   }
-
 }
