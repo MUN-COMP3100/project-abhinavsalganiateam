@@ -4,7 +4,7 @@
 
 This feature aims to create a database to store movie and TV show information, including ratings. Users can add, view, search, and delete movies or TV shows from the database.
 
-### Implementation strategy:
+### Implementation:
 
 The feature is implemented using Node.js and MongoDB. The movie and TV show data is stored in a MongoDB database, and the feature uses the MovieBusiness and movieDAO modules to interact with the database. The feature provides a RESTful API that handles HTTP requests and responses using Express.js.
 
@@ -13,31 +13,39 @@ The feature is implemented using Node.js and MongoDB. The movie and TV show data
 This feature depends on the MovieBusiness and movieDAO modules and the MongoDB database for storage.
 State of implementation: The feature is partially complete. The database and API have been set up, and the MovieBusiness and movieDAO modules have been created. However, some API endpoints may not be fully implemented, and testing and error handling may need to be improved.
 
+### Status:
+
+The feature is fully implemented and working.
+
+### Testing:
+
+The feature has been tested using Mocha testing framework for all CRUD funtions. run npm test to run the tests.
+
 ### 2. _Name of the feature: Search Engine Feature_
 
 ### Description:
 
 This feature allows users to search for movies in the movie database based on their input search term(s).
 
-### Implementation strategy:
+### Implementation:
 
 Define an API endpoint for the search feature in the searchController.js file.
 Use the Mongoose package to connect to the movie database in the movieBusiness.js file.
 Implement a search function that takes the user's search term(s) and uses the Mongoose package to search the movie database for any movies that match the search term(s).
 Return the search results to the user in the searchController.js file.
 
-### Tools and imported packages/modules used:
+### Dependancies:
 
 Mongoose package for connecting to the movie database and searching for movies based on user input.
 Express.js framework for defining the API endpoint and handling HTTP requests and responses.
 
-### Features/Project modules used or depends on:
+### Status:
 
-The movie database module for storing movie data.
+The feature is fully implemented and working.
 
-### State of implementation:
+### Testing:
 
-The implementation of this feature is not completed yet, as the movieBusiness.js file needs to be updated with the search function using Mongoose to search for movies based on user input. The searchController.js file also needs to be updated with the API endpoint for the search feature.
+The feature has been tested using Mocha testing framework run npm test to run the tests.
 
 ### 3. _Feature Name: User Creation and Authentication_
 
@@ -57,6 +65,10 @@ This feature uses MongoDB to store user information and depends on the db.mjs mo
 
 The feature is fully implemented and working. Users can be created, retrieved, updated, and deleted from the database using the UserBusiness module. User input is validated using the validate-fields module before being added to the database.
 
+### Testing:
+
+The feature has been tested using Mocha testing framework run npm test to run the tests.
+
 ## 4. _Name of the feature: User reviews management_
 
 Description: This feature provides functionality to manage user reviews in the application. It provides methods to add a new review, update an existing review, get all reviews, get reviews by movie, and get reviews by user.
@@ -71,13 +83,19 @@ This component depends on the getDb function from utils/db.mjs to establish a co
 
 Status: The implementation of this feature is partially complete. The component provides methods to add, get, update, and delete reviews, and to get reviews by movie or user.
 
+### Status:
+
+The feature has been tested using Mocha testing framework run npm test to run the tests.
+
+### Testing:
+
 ## 5. _Name of the feature: Location Based Movie-Showtimes_
 
 ### Description:
 
 LocationController.js is a feature that uses Serp API to get movie timings, OpenCage to get city and geoLocation, and files called getCity and movieUtils to display movie showtimes for a given location.
 
-### Implementation strategy:
+### Implementation:
 
 The LocationController.js feature uses the Axios package to make HTTP requests to the Serp API and OpenCage API. It also imports several modules, including getCity and movieUtils, to help with data manipulation and display.
 
@@ -89,9 +107,11 @@ Next, the feature uses the getCity module to retrieve movie data from the Serp A
 
 LocationController.js depends on the geolocation API, Serp API, OpenCage API, Axios package, and the getCity and movieUtils modules.
 
-### State of implementation:
+### Status::
 
 The feature is complete and working as intended.
+
+### Testing:
 
 ## 6. _Name of the feature: Content Moderation_
 
@@ -99,7 +119,7 @@ The feature is complete and working as intended.
 
 This feature will allow the system to moderate user reviews and prevent spam and inappropriate content from being published on the platform. This will help maintain a high-quality user experience and prevent any potentially harmful content from being shared.
 
-### Implementation strategy:
+### Implementation:
 
 The implementation strategy for this feature will involve using third-party services or libraries that provide content moderation and spam detection functionalities. These services will be integrated into the user review submission process, where they will analyze the content of the review and flag any potentially inappropriate or spammy content. The system will then either reject the review or send it to an admin for further review.
 
@@ -109,6 +129,10 @@ Tools and imported packages and modules: Some of the tools and imported packages
 
 This feature will depend on the user review management feature and the user authentication feature. The content moderation system will only moderate reviews submitted by authenticated users.
 
-### State of the implementation:
+### Status:
 
-This feature is not yet implemented in the current version of the project. Further research and testing will be required to identify the most suitable content moderation service for the platform and integrate it into the system.
+This feature is implemented and working.
+
+### Testing:
+
+The feature has been tested using Mocha testing framework.
