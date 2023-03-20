@@ -1,5 +1,5 @@
 import { UserDAO } from "../DAO/userDAO.js";
-import { connectToDB } from "../../utils/db.mjs";
+import { connectToDB, getDb } from "../../utils/db.mjs";
 
 async function getCollection() {
   let db = await getDb();
@@ -27,7 +27,11 @@ export class UserBusiness {
   static async get_user(userId) {
     let collection = await getCollection();
     let objs = await collection.find({ userid: userId }).toArray();
-    return objs;
+    if (objs.length > 0) {
+      return objs;
+    } else {
+      return "user not found";
+    }
   }
 
   static async get_user_by_email(email) {
@@ -35,11 +39,11 @@ export class UserBusiness {
     let objs = await collection.find({ email: email }).toArray();
   }
 
-  static async update_user(user) {
+  static async update_user(user, userId) {
     let collection = await getCollection();
     let objs = await collection.updateOne(
-      { userid: user.userid },
-      { $set: { name: user.userid, email: user.email, password: user.password, role: user.role } }
+      { userid: userId },
+      { $set: { name: user.name, email: user.email, password: user.password } }
     );
     return objs;
   }
@@ -48,5 +52,23 @@ export class UserBusiness {
     let collection = await getCollection();
     let objs = await collection.deleteOne({ userid: userId });
     return objs;
+  }
+
+  static async login(email, password) {
+    let collection = await getCollection();
+    let objs = await collection.find({ email: email, password: password }).toArray();
+    if (objs.length > 0) {
+      return true;
+    }
+    return false;
+  }
+
+  static async validate_userid(userid) {
+    let collection = await getCollection();
+    let objs = await collection.find({ userid: userid }).toArray();
+    if (objs.length > 0) {
+      return true;
+    }
+    return false;
   }
 }

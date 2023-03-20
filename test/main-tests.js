@@ -1,152 +1,193 @@
-import { strictEqual, fail } from 'assert';
-import { Contact } from '../model/contact.mjs';
-import { validate_fields } from '../utils/validate-fields.mjs';
-import axios from 'axios';
+import { strictEqual, fail } from "assert";
+import { UserDAO } from "../model/DAO/userDAO.js";
+import { validate_fields } from "../utils/validate-fields.mjs";
+import axios from "axios";
 const create = axios.create;
 
-var myurl = 'http://localhost:3000';           
+var myurl = "http://localhost:3000";
 // Let's configure the base url
 const instance = create({
-    baseURL: myurl,
-    timeout: 5000, //5 seconds max
-    headers: {'content-type': 'application/json'}
+  baseURL: myurl,
+  timeout: 5000, //5 seconds max
+  headers: { "content-type": "application/json" },
 });
 
-describe('IMDB Clone app - testing with Mocha', function(){
-    /* describe('Test Models', function(){
-        describe('add movie ', function(){
-                 
+describe("IMDB Clone app - testing with Mocha", function () {
+  describe("Test Models", function () {
+    describe("Testing user inputs (email, password)", function () {
+      it("Test if user is invalid function (Invalid password)", async function () {
+        let user = new UserDAO("JoSmith", "John Smith", "johnsmith@example.com", "asdasdad");
+        strictEqual(await validate_fields(user.name, user.email, user.password), false);
+      });
+      it("Test if user is invalid function (Invalid Email)", async function () {
+        let user = new UserDAO("JoSmith", "John Smith", "johnsmithexample.com", "7vM#tP!z");
+        strictEqual(await validate_fields(user.name, user.email, user.password), false);
+      });
 
-            it('Test if user is invalid function (Invalid Email)', async function(){
-                let c = new Contact(cname, 'amilcarsj@mun@ca.13', ctel, caddress);
-                strictEqual(await validate_fields(c.name, c.email, c.tel, c.address), false);
-            });
-            it('Test if user is invalid function (Invalid Tel)', async function(){
-                let c = new Contact(cname, cemail, '70X11122X2', caddress);
-                strictEqual(await validate_fields(c.name, c.email, c.tel, c.address), false);
-            });
-        });
-    }); */
-    describe('Test API calls', function(){
-        describe('Movies ', async function(){            
-            it('Fail 1. POST - Test invalid name in the object', async function(){
-                let data = {
-                    name: '12Asj/@3_', 
-                    email: 'amilcarsj@mun.ca', 
-                    tel: '709-456-7891', 
-                    address: '230 Elizabeth Ave, St. John\'s, Newfoundland'
-                }
-                let res = await instance.post('/contacts', data);
-                strictEqual(res.data, 'Error. User not inserted in the database.');                
-            });
-            it('Fail 2. POST - Test invalid email in the object', async function(){
-                let data = { 
-                            name: 'Amilcar Soares', 
-                            email: 'amilX@domain@x./@3_', 
-                            tel: '709-456-7891', 
-                            address: '230 Elizabeth Ave, St. John\'s, Newfoundland'
-                        };
-                let res = await instance.post('/contacts', data)
-                strictEqual(res.data, 'Error. User not inserted in the database.');                
-            });
-            it('Fail 3. POST - Test invalid tel in the object', async function(){
-                let data = { 
-                    name: 'Amilcar Soares', 
-                    email: 'amilcarsj@mun.ca', 
-                    tel: 'InvalidXtel', 
-                    address: '230 Elizabeth Ave, St. John\'s, Newfoundland'
-                };
-                let res = await instance.post('/contacts', data)
-                strictEqual(res.data, 'Error. User not inserted in the database.');                
-            });
-            it('Fail 4. GET - /contacts/:name (No user with name)', async function(){
-                let user_name = 'Someone Unknown';
-                let res = await instance.get('/contacts/'+user_name)
-                strictEqual(res.data,'No item was found');                  
-            });
-            it('Fail 5. DELETE - /contacts/:name (No user with name)', async function(){
-                let user_name = 'Someone Unknown';
-                let res = await instance.delete('/contacts/'+user_name);
-                strictEqual(res.data,'Contact was not found');
-            });
-            it('Fail 6. PUT - /contacts/:name (No user with name)', async function(){
-                let data = { 
-                    name: 'Someone Unknown', 
-                    email: 'amilcarsj@mun.ca', 
-                    tel: 'InvalidXtel', 
-                    address: '230 Elizabeth Ave, St. John\'s, Newfoundland'
-                };
-                let res = await instance.put('/contacts/'+data.name, data);
-                strictEqual(res.data,'The new user data is not valid.');
-            });
-            it('Success 1. POST - Valid User, DELETE - User', async function(){
-                let data = {
-                    name: 'John Smith', 
-                    email: 'jsmith@mun.ca', 
-                    tel: '709-456-7891', 
-                    address: '235 Forest Road, St. John\'s, Newfoundland'
-                }
-                let res_post = await instance.post('/contacts', data)
-                strictEqual(res_post.data, 'Contact correctly inserted in the Database.');
-                let res_del = await instance.delete('/contacts/'+data.name);
-                strictEqual(res_del.data, 'Contact was deleted.');                
-            });
-            it('Success 2. POST - Valid User, GET - /contacts (Greater 0), DELETE - User', async function(){
-                let data = { 
-                    name: 'Amilcar Soares', 
-                    email: 'amilcarsj@mun.ca', 
-                    tel: '709-221-6612', 
-                    address: '230 Elizabeth Ave, St. John\'s, Newfoundland'
-                };
-                let res_post = await instance.post('/contacts', data)
-                let res_get = await instance.get('/contacts')
-                if (res_get.data.length < 1 ) {
-                    fail('There should be elements in the database');
-                }
-                let res_del = await instance.delete('/contacts/'+data.name);
-                strictEqual(res_del.data, 'Contact was deleted.');                
-            });
-            it('Success 3. POST - Valid User, GET - :name, DELETE - User', async function(){
-                let data = {
-                    name: 'Bob Churchil', 
-                    email: 'bchurchil@mun.ca', 
-                    tel: '709-987-6543', 
-                    address: '50 Crosbie Road, St. John\'s, Newfoundland'
-                };
-                let res_post = await instance.post('/contacts', data)
-                let res_get = await instance.get('/contacts/'+data.name)
-                strictEqual(res_get.data.name, data.name);
-                strictEqual(res_get.data.email, data.email);
-                strictEqual(res_get.data.tel, data.tel);
-                strictEqual(res_get.data.address, data.address);
-                let res_del = await instance.delete('/contacts/'+data.name);
-                strictEqual(res_del.data, 'Contact was deleted.');                
-            });
-            it('Success 4. POST - Valid User, UPDATE - :name, GET - /:name, DELETE - User', async function(){
-                let data = {
-                    name: 'Robert Doe', 
-                    email: 'rob@mun.ca', 
-                    tel: '709-917-6643', 
-                    address: '150 Torbay Road, St. John\'s, Newfoundland'
-                };
-                let up_data = {
-                    name: 'Robert Doe Jr', 
-                    email: 'robs@mun.ca', 
-                    tel: '709-917-6643', 
-                    address: '105 Torbay Road, St. John\'s, Newfoundland'
-                };
-                let res_post = await instance.post('/contacts', data)
-                let res_put = await instance.put('/contacts/'+data.name, up_data);
-                strictEqual(res_put.data,'Contact correctly updated.');
-                let res_get = await instance.get('/contacts/'+up_data.name)
-                strictEqual(res_get.data.name, up_data.name);
-                strictEqual(res_get.data.email, up_data.email);
-                strictEqual(res_get.data.tel, up_data.tel);
-                strictEqual(res_get.data.address, up_data.address);
-                let res_del = await instance.delete('/contacts/'+up_data.name);
-                strictEqual(res_del.data, 'Contact was deleted.');                
-            });            
-        });        
+      it("Test if user email is valid", async function () {
+        let user = new UserDAO("JoSmith", "John Smith", "jonh@eam.com", "7vM#tP!z");
+        strictEqual(await validate_fields(user.name, user.email, user.password), true);
+      });
+
+      it("Test if user password is valid", async function () {
+        let user = new UserDAO("JoSmith", "John Smith", "jonh@eam.com", "7vM#tP!z");
+        strictEqual(await validate_fields(user.name, user.email, user.password), true);
+      });
+
+      // it("Test if userid is valid add user fail ", async function () {
+      //   let data = {
+      //     userid: "johnsmith",
+      //     name: "John Smith",
+      //     email: "JOhnsmoth@exmple.com",
+      //     password: "RMk2002.",
+      //   };
+      //   let res = await instance.post("/user", data);
+      //   strictEqual(res.data, "user already exists");
+      // });
+
+      // it("Test if userid is valid add user pass ", async function () {
+      //   let data = {
+      //     userid: "johnsmith1",
+      //     name: "John Smith",
+      //     email: "john1@email.com",
+      //     password: "RMk2002.",
+      //   };
+      //   let res = await instance.post("/user", data);
+      //   strictEqual(res.data, "user added successfully to the database ! ");
+      // });
     });
-    
+    describe("Test API calls", function () {
+      describe("testing user apis  ", async function () {
+        it("1. pass - add user ", async function () {
+          let data = {
+            userid: "johnsmith",
+            name: "John Smith",
+            email: "JOhnsmoth@exmple.com",
+            password: "RMk2002.",
+          };
+          let res = await instance.post("/user", data);
+          strictEqual(res.data.acknowledged, true);
+        });
+
+        it("2. pass - get user ", async function () {
+          let res = await instance.get("/user/johnsmith");
+          // console.log(res.data);
+          strictEqual(res.data[0].userid, "johnsmith");
+        });
+
+        it("3 . fail - get user ", async function () {
+          let res = await instance.get("/user/johnsmit");
+          strictEqual(res.data, "user not found");
+        });
+
+        it("4. pass - update user ", async function () {
+          let data = {
+            userid: "johnsmith",
+            name: "John Smith",
+            email: "rashodk@gmail.com",
+          };
+          let res = await instance.put("/user/johnsmith", data);
+          strictEqual(res.data.modifiedCount, 1);
+        });
+
+        it("5. pass - delete user ", async function () {
+          let res = await instance.delete("/user/johnsmith");
+          strictEqual(res.data.deletedCount, 1);
+        });
+      });
+
+      describe("testing movie apis  ", async function () {
+        it("1. pass - add movie ", async function () {
+          let data = {
+            color: "Color",
+            director_name: "James Cameron",
+            duration: 178,
+            gross: 760505847,
+            genres: "Action|Adventure|Fantasy|Sci-Fi",
+            actor_1_name: "CCH Pounder",
+            movie_title: "Lorem Ipsum",
+            num_voted_users: 886204,
+            language: "English",
+            country: "USA",
+            budget: 237000000,
+            title_year: 2009,
+            imdb_score: 7.9,
+          };
+          let res = await instance.post("/movie", data);
+          strictEqual(res.data, "Movie added successfully");
+        });
+
+        it("2. pass - get movie ", async function () {
+          let res = await instance.get("/movie/Lorem Ipsum");
+
+          strictEqual(res.data[0].movie_title, "Lorem Ipsum");
+        });
+
+        it("3 . fail - get movie ", async function () {
+          let res = await instance.get("/movie/tt123456");
+          strictEqual(res.data, "Movie not found");
+        });
+
+        it("5. pass - delete movie ", async function () {
+          let res = await instance.delete("/movie/Lorem Ipsum");
+          strictEqual(res.data.deletedCount, 1);
+        });
+
+        it("6. fail - delete movie ", async function () {
+          let res = await instance.delete("/movie/Lorem Ipsum");
+          strictEqual(res.data.deletedCount, 0);
+        });
+      });
+
+      describe("testing userreview apis  ", async function () {
+        it("1. pass - add userreview ", async function () {
+          let data = {
+            userid: "johnsmith",
+            movie_title: "tt123456",
+            review: "Lorem Ipsum",
+            rating: 5,
+          };
+          let res = await instance.post("/userReview", data);
+          strictEqual(res.data.acknowledged, true);
+        });
+
+        it("2. pass - get userreview ", async function () {
+          let res = await instance.get("/userReview/user/johnsmith");
+          strictEqual(res.data[0].userid, "johnsmith");
+        });
+
+        it("3 . fail - get userreview ", async function () {
+          let res = await instance.get("/userReview/user/johnsmit");
+          strictEqual(res.data, "no reviews with this user id");
+        });
+
+        it("4. pass - update userreview ", async function () {
+          let data = {
+            userid: "johnsmith",
+            movie_title: "tt123456",
+            review: "Lorem pua",
+            rating: 7,
+          };
+          let res = await instance.put("/userReview/update/?userid=johnsmith&movieid=tt123456", data);
+          strictEqual(res.data.modifiedCount, 1);
+        });
+
+        it("5. fail - update userreview ", async function () {
+          let data = {
+            userid: "johnsmith",
+            movie_title: "tt123456",
+            review: "Lorem puka",
+            rating: 7,
+          };
+          let res = await instance.put("/userReview/update/?userid=johsmith&movieid=tt123456", data);
+          strictEqual(res.data.modifiedCount, 0);
+        });
+
+        it("6. pass - delete userreview ", async function () {
+          let res = await instance.delete("/userReview/delete/?userid=johnsmith&movieid=tt123456");
+          strictEqual(res.data.deletedCount, 1);
+        });
+      });
+    });
+  });
 });

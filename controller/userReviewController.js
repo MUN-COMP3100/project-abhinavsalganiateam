@@ -14,7 +14,7 @@ export async function GetReviewByMovie(req, res) {
 }
 
 export async function GetReviewByUser(req, res) {
-  let user = req.params.userId;
+  let user = req.params.id;
   let reviews = await userReviewBusiness.getReview(user);
   res.send(reviews);
 }
@@ -26,14 +26,16 @@ export async function AddReview(req, res) {
 }
 
 export async function UpdateReview(req, res) {
+  let userid = req.query.userid;
+  let movie_title = req.query.movie_title;
   let review = new UserReviewDTO(req.body.userid, req.body.movie_title, req.body.review, req.body.rating);
-  let result = await userReviewBusiness.updateReview(review);
+  let result = await userReviewBusiness.updateReview(review, userid, movie_title);
   res.json(result);
 }
 
 export async function DeleteReview(req, res) {
-  let userId = req.params.userId;
-  let movie_title = req.params.movie_title;
+  let userId = req.query.userid;
+  let movie_title = req.query.movieid;
   let result = await userReviewBusiness.deleteReview(userId, movie_title);
   res.json(result);
 }
