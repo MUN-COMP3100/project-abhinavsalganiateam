@@ -16,7 +16,7 @@ Team Member 2 : Abhinav Salgania, MUNID: 201937687, GITHUB: AbhinavSalgania
 
 Our entertainment platform is a one-stop-shop for movie buffs, TV show enthusiasts, and live entertainment fans. We've combined the best features of IMDb, Netflix, and Ticketmaster to offer a comprehensive database of movies, TV shows, and live performances. With our platform, users can easily search for their favorite actors and artists, discover new content, create personalized watchlists, and receive tailored recommendations based on their viewing history. Our user-friendly interface allows users to rate and review movies and TV shows, providing valuable feedback to other users. Additionally, our integration with Ticketmaster allows users to search for live performances, view seating charts, and book tickets directly through the platform. We aim to provide a seamless and convenient experience for entertainment enthusiasts everywhere.
 
----
+---V
 
 <br>
 
