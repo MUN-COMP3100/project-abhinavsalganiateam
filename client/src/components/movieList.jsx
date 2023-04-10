@@ -27,7 +27,7 @@ const MovieList = () => {
 
   return (
     <div>
-      <div className="p-[3rem] pt-0 bg-inherit text-white">
+      <div id="popular" className="p-[3rem] pt-0 bg-inherit text-white">
         <h2 className="text-[1.75rem] m-[2.5rem]">POPULAR</h2>
         <div className="flex flex-wrap justify-center overflow-scroll scrollbar-hide gap-2">
           {movieList.map((movie, index) => (
@@ -35,7 +35,7 @@ const MovieList = () => {
           ))}
         </div>
       </div>
-      <div className="p-[3rem] pt-0 bg-inherit text-white">
+      <div id="upcoming" className="p-[3rem] pt-0 bg-inherit text-white">
         <h2 className="text-[1.75rem] m-[2.5rem]">UP COMING</h2>
         <div className="flex flex-wrap justify-center overflow-scroll scrollbar-hide gap-2">
           {upcoming.map((movie, index) => (

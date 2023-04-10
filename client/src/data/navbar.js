@@ -2,11 +2,20 @@ import { FaFacebook, FaPhoneAlt, FaInstagram, FaTwitter, FaMapMarkerAlt } from "
 import { HiOutlineMail } from "react-icons/hi";
 
 export const navLinks = [
-  { title: "Up Coming", path: "/", scrollTo: "Home", offset: 0, scroll: true, isDynamic: false, smooth: true, duration: 1000 },
-  { title: "Popular", path: "/#About", scrollTo: "About", offset: 0, scroll: false, isDynamic: false, smooth: true, duration: 1000 },
-  { title: "TV Shows", path: "/#About", scrollTo: "About", offset: 0, scroll: false, isDynamic: false, smooth: true, duration: 1000 },
-  { title: "Movies", path: "/#Skills", scrollTo: "Skills", offset: 0, scroll: false, isDynamic: false, smooth: true, duration: 1000 },
-  { title: "Login/SginUp", path: "/#Work", scrollTo: "Work", offset: -150, scroll: false, isDynamic: true, smooth: true, duration: 1000 },
+  {
+    title: "Up Coming",
+    path: "/upcoming",
+    scrollTo: "upcoming",
+    offset: -80,
+    scroll: true,
+    isDynamic: false,
+    smooth: true,
+    duration: 1000,
+  },
+  { title: "Popular", path: "/#popular", scrollTo: "popular", offset: -80, scroll: false, isDynamic: false, smooth: true, duration: 1000 },
+  { title: "TV Shows", path: "/#tvshows", scrollTo: "About", offset: 0, scroll: false, isDynamic: false, smooth: true, duration: 1000 },
+  { title: "Movies", path: "/#movies", scrollTo: "Skills", offset: 0, scroll: false, isDynamic: false, smooth: true, duration: 1000 },
+  { title: "Login/SginUp", path: "/auth" },
 ];
 
 export const socialLinks = [

@@ -6,10 +6,9 @@ import Footer from "./footer";
 function Main() {
   return (
     <div className="flex flex-col bg-[#1d1d1f] w-full">
-      <Header />
       <Home />
       <MovieList />
-      <Footer />
+      {/* <Footer /> */}
     </div>
   );
 }

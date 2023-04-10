@@ -1,14 +1,19 @@
 import React from "react";
-import { Link as Links } from "react-scroll";
+import { Link as Links, animateScroll as scroll } from "react-scroll";
 
 import { FaBars, FaTimes } from "react-icons/fa";
-
+import { Link } from "react-router-dom";
 import { useState } from "react";
 import { navLinks, socialLinks } from "../data/navbar";
 
 function Navbar() {
   const [nav, setNav] = useState(false);
   const HandleClick = () => setNav(!nav);
+
+  const scrollToTop = () => {
+    scroll.scrollToTop();
+  };
+
   return (
     <div className="fixed w-full h-[80px] flex justify-between items-center px-4 bg-[#1d1d1f] text-gray-50 z-10">
       <div className="z-1">
@@ -20,15 +25,17 @@ function Navbar() {
         <ul className="flex">
           {navLinks.map((link, index) => (
             <li className="p-4" key={index}>
-              <Links
-                activeClass="active"
-                to={link.scrollTo}
-                smooth={true}
-                duration={link.duration}
-                offset={link.offset}
-                isDynamic={link.isDynamic}>
-                {link.title}
-              </Links>
+              <Link to={link.path} >
+                <Links
+                  activeClass="active"
+                  to={link.scrollTo}
+                  smooth={link.scroll}
+                  duration={link.duration}
+                  offset={link.offset}
+                  isDynamic={link.isDynamic}>
+                  {link.title}
+                </Links>
+              </Link>
             </li>
           ))}
         </ul>
