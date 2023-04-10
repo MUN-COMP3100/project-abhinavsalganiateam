@@ -2,17 +2,18 @@ import React, { useEffect, useState } from "react";
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 import { Carousel } from "react-responsive-carousel";
 import { RiStarSFill } from "react-icons/ri";
+import MovieList from "./movieList";
 
-const Home = () => {
+const Movies = () => {
   const [popularMovies, setPopularMovies] = useState([]);
 
   useEffect(() => {
-    fetch("https://api.themoviedb.org/3/movie/upcoming?api_key=6f8cd9f03058d4fc70b3413d4ce50bac")
+    fetch("https://api.themoviedb.org/3/movie/popular?api_key=6f8cd9f03058d4fc70b3413d4ce50bac&language=en-US&page=3")
       .then((res) => res.json())
       .then((data) => setPopularMovies(data.results));
   }, []);
   return (
-    <div className="flex bg-inherit w-full">
+    <div className="flex flex-col bg-inherit w-full">
       <Carousel showThumbs={false} autoPlay={true} transitionTime={3} infiniteLoop={true} showStatus={false}>
         {popularMovies.map((movie, index) => (
           <div className="w-full flex items-center justify-center" key={index}>
@@ -36,8 +37,11 @@ const Home = () => {
           </div>
         ))}
       </Carousel>
+      <div className="bg-[#1d1d1f]">
+        <MovieList />
+      </div>
     </div>
   );
 };
 
-export default Home;
+export default Movies;
