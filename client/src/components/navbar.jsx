@@ -1,5 +1,5 @@
 import React from "react";
-import { Link as Links, animateScroll as scroll } from "react-scroll";
+import { Link as Links } from "react-scroll";
 
 import { FaBars, FaTimes } from "react-icons/fa";
 import { Link } from "react-router-dom";
@@ -9,11 +9,6 @@ import { navLinks, socialLinks } from "../data/navbar";
 function Navbar() {
   const [nav, setNav] = useState(false);
   const HandleClick = () => setNav(!nav);
-
-  const scrollToTop = () => {
-    scroll.scrollToTop();
-  };
-
   return (
     <div className="fixed w-full h-[80px] flex justify-between items-center px-4 bg-[#1d1d1f] text-gray-50 z-10">
       <div className="z-1">

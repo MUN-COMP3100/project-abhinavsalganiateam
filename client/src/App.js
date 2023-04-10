@@ -1,6 +1,6 @@
 import Main from "./components/Main";
 import AuthPage from "./components/authPage";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import {Routes, Route } from "react-router-dom";
 import NavBar from "./components/navbar";
 import Footer from "./components/footer";
 import NotFoundPage from "./components/notFoundPage";

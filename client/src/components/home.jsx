@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 import { Carousel } from "react-responsive-carousel";
 import { RiStarSFill } from "react-icons/ri";
-import MovieList from "./movieList";
 
 const Home = () => {
   const [popularMovies, setPopularMovies] = useState([]);
