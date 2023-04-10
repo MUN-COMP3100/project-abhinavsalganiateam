@@ -25,7 +25,9 @@ function Navbar() {
         <ul className="flex">
           {navLinks.map((link, index) => (
             <li className="p-4" key={index}>
-              <Link to={link.path} >
+              {link.path ? (
+                <Link to={link.path}>{link.title}</Link>
+              ) : (
                 <Links
                   activeClass="active"
                   to={link.scrollTo}
@@ -35,7 +37,7 @@ function Navbar() {
                   isDynamic={link.isDynamic}>
                   {link.title}
                 </Links>
-              </Link>
+              )}
             </li>
           ))}
         </ul>
