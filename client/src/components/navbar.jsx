@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 import { useState } from "react";
 import { navLinks, socialLinks } from "../data/navbar";
 
+import SearchBar from "./searchBar";
 function Navbar() {
   const [nav, setNav] = useState(false);
   const HandleClick = () => setNav(!nav);
@@ -15,8 +16,11 @@ function Navbar() {
         {/* <Image src={Logo} alt="logo" style={{ width: "50px" }} /> */}
         <h1>IMDB CLONE</h1>
       </div>
+      {/* search bar */}
+
       {/*menu */}
-      <div className="hidden md:flex">
+      <div className="hidden md:flex flex-row">
+        <SearchBar />
         <ul className="flex">
           {navLinks.map((link, index) => (
             <li className="p-4" key={index}>
