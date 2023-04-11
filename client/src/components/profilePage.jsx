@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 
 const ProfilePage = () => {
   const { id } = useParams();
-  console.log(`id${id}`);
+  // console.log(`id${id}`);
 
   const [user, setUser] = useState({});
 

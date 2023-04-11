@@ -21,7 +21,7 @@ function Navbar() {
           {navLinks.map((link, index) => (
             <li className="p-4" key={index}>
               {link.path ? (
-                <Link to={link.path}>{link.title}</Link>
+                <Link href={link.path}>{link.title}</Link>
               ) : (
                 <Links
                   activeClass="active"
@@ -44,12 +44,20 @@ function Navbar() {
       {/*mobile menu */}
       <ul className={!nav ? "hidden" : "absolute top-0 left-0 w-full h-screen bg-black flex flex-col justify-center items-center"}>
         {navLinks.map((link, index) => (
-          <li className="py-6 text-4fxl" key={index}>
-            <li href={link.path} legacyBehavior scroll={link.scroll}>
-              <Links activeClass="active" to={link.scrollTo} smooth={true} duration={500} offset={link.offset} onClick={HandleClick}>
+          <li className="p-4" key={index}>
+            {link.path ? (
+              <Link href={link.path}>{link.title}</Link>
+            ) : (
+              <Links
+                activeClass="active"
+                to={link.scrollTo}
+                smooth={link.scroll}
+                duration={link.duration}
+                offset={link.offset}
+                isDynamic={link.isDynamic}>
                 {link.title}
               </Links>
-            </li>
+            )}
           </li>
         ))}
         {/*social icons */}
@@ -57,9 +65,9 @@ function Navbar() {
           <ul className="flex">
             {socialLinks.map((link, index) => (
               <li key={index}>
-                <li href={link.path}>
+                <a href={link.path}>
                   <link.icon size={20} />
-                </li>{" "}
+                </a>{" "}
               </li>
             ))}
           </ul>
