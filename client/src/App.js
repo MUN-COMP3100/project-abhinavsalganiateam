@@ -20,7 +20,7 @@ function App() {
         <Route path="/tv" element={<TvShows />} />
         {/* <Route path="/tv/:tvId" element={<Main />} /> */}
         <Route path="/*" element={<NotFoundPage />} />
-        <Route path="/profile" element={<ProfilePage />} />
+        <Route path="/profile/:id" element={<ProfilePage />} />
       </Routes>
       <Footer />
       {/* </Router> */}

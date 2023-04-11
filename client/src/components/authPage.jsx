@@ -21,7 +21,18 @@ const AuthPage = () => {
 
       if (result) {
         console.log("User logged in successfully");
-        navigate("/profile");
+
+        try {
+          fetch(`http://localhost:3000/useremail/${email}`).then((response) => {
+            response.json().then((result1) => {
+              console.log(result1);
+              navigate(`/profile/${result1[0].userid}`);
+            });
+          });
+        } catch (error) {
+          console.log(error);
+        }
+        // navigate(`/profile/${result1.userid}}`);
 
         // Handle successful login, e.g., redirect to another page
       } else {

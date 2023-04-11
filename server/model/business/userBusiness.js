@@ -37,6 +37,7 @@ export class UserBusiness {
   static async get_user_by_email(email) {
     let collection = await getCollection();
     let objs = await collection.find({ email: email }).toArray();
+    return objs;
   }
 
   static async update_user(user, userId) {

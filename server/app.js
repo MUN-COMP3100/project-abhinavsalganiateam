@@ -41,7 +41,7 @@ async function createServer() {
     app.get("/user", getall_users);
     app.get("/user/:id", get_user);
     app.post("/user", adduser);
-    app.get("/user/email/:email", get_user_by_email);
+    app.get("/useremail/:email", get_user_by_email);
     app.put("/user/update/:id", update_user);
     app.delete("/user/:id", delete_user);
     app.get("/login", login);
