@@ -13,8 +13,8 @@ export const navLinks = [
     duration: 1000,
   },
   { title: "Popular", scrollTo: "popular", offset: -80, scroll: true, isDynamic: false, smooth: true, duration: 1000 },
-  { title: "TV Shows", path: "/tv", scrollTo: "About", offset: 0, scroll: false, isDynamic: false, smooth: true, duration: 1000 },
-  { title: "Movies", path: "/movies", scrollTo: "Skills", offset: 0, scroll: false, isDynamic: false, smooth: true, duration: 1000 },
+  { title: "TV Shows", path: "/tv" },
+  { title: "Movies", path: "/movies" },
   { title: "Login/SginUp", path: "/auth" },
 ];
 

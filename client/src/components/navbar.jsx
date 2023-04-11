@@ -21,7 +21,7 @@ function Navbar() {
           {navLinks.map((link, index) => (
             <li className="p-4" key={index}>
               {link.path ? (
-                <Link href={link.path}>{link.title}</Link>
+                <Link to={link.path}>{link.title}</Link>
               ) : (
                 <Links
                   activeClass="active"
@@ -46,7 +46,9 @@ function Navbar() {
         {navLinks.map((link, index) => (
           <li className="p-4" key={index}>
             {link.path ? (
-              <Link href={link.path}>{link.title}</Link>
+              <Link to={link.path} onClick={HandleClick}>
+                {link.title}
+              </Link>
             ) : (
               <Links
                 activeClass="active"
@@ -64,7 +66,7 @@ function Navbar() {
         <div>
           <ul className="flex">
             {socialLinks.map((link, index) => (
-              <li key={index}>
+              <li key={index} onClick={HandleClick}>
                 <a href={link.path}>
                   <link.icon size={20} />
                 </a>{" "}
