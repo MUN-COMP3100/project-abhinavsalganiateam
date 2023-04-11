@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 
 const AuthPage = () => {
   const [isLogin, setIsLogin] = useState(true);
+  const [error, setError] = useState(null);
   const navigate = useNavigate();
 
   const toggleAuthMode = () => {
@@ -21,9 +22,11 @@ const AuthPage = () => {
       if (result) {
         console.log("User logged in successfully");
         navigate("/profile");
+
         // Handle successful login, e.g., redirect to another page
       } else {
         console.log("User not found or incorrect credentials");
+        setError("User not found or incorrect credentials");
         // Handle unsuccessful login, e.g., show an error message
       }
     } catch (error) {
@@ -81,6 +84,10 @@ const AuthPage = () => {
               required
               className="border border-gray-300 w-full px-3 py-2 rounded focus:outline-none focus:border-amber-500 text-black"
             />
+            {/*error message indicator */}
+            <p id="message" className="text-red-500 text-xs italic pt-2">
+              {error}
+            </p>
           </div>
           <button type="submit" className="bg-amber-500 text-white w-full py-2 rounded-md hover:bg-amber-600">
             {isLogin ? "Login" : "Sign Up"}
