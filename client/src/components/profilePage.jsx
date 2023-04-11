@@ -4,7 +4,6 @@ import { useParams } from "react-router-dom";
 const ProfilePage = () => {
   const { id } = useParams();
   // console.log(`id${id}`);
-  
   const [user, setUser] = useState({});
   useEffect(() => {
     try {
@@ -29,7 +28,11 @@ const ProfilePage = () => {
         <h2 className="text-3xl font-semibold mb-8 text-center">User Profile</h2>
 
         <div>
-          <img className="rounded-full w-32 h-32 mx-auto" src="https://api.dicebear.com/6.x/adventurer/svg?seed=felix" alt="user" />
+          <img
+            className="rounded-full w-32 h-32 mx-auto"
+            src={`https://api.dicebear.com/6.x/bottts/svg?seed=${user.userid}`}
+            alt="avatar"
+          />
         </div>
         <div className="mb-5">
           <label className="block text-lg font-medium mb-2">Name</label>
