@@ -1,15 +1,36 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const AuthPage = () => {
   const [isLogin, setIsLogin] = useState(true);
+  const navigate = useNavigate();
 
   const toggleAuthMode = () => {
     setIsLogin(!isLogin);
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    const email = e.target.email.value;
+    const password = e.target.password.value;
     // Handle form submission for login or signup
+    try {
+      const response = await fetch(`http://localhost:3000/login?email=${email}&password=${password}`);
+      const result = await response.json();
+
+      if (result) {
+        console.log("User logged in successfully");
+        navigate("/profile");
+        // Handle successful login, e.g., redirect to another page
+      } else {
+        console.log("User not found or incorrect credentials");
+        // Handle unsuccessful login, e.g., show an error message
+      }
+    } catch (error) {
+      console.error("Error during login:", error);
+      // Handle error, e.g., show an error message
+    }
+    // Handle signup
   };
 
   return (
@@ -20,13 +41,22 @@ const AuthPage = () => {
           {!isLogin && (
             <div className="mb-4">
               <label className="block text-sm font-medium mb-2" htmlFor="name">
+                User ID
+              </label>
+              <input
+                type="text"
+                id="name"
+                required
+                className="border border-gray-300 w-full px-3 py-2 rounded focus:outline-none focus:border-amber-500 text-black"
+              />
+              <label className="block text-sm font-medium mb-2" htmlFor="name">
                 Name
               </label>
               <input
                 type="text"
                 id="name"
                 required
-                className="border border-gray-300 w-full px-3 py-2 rounded focus:outline-none focus:border-amber-500"
+                className="border border-gray-300 w-full px-3 py-2 rounded focus:outline-none focus:border-amber-500 text-black"
               />
             </div>
           )}

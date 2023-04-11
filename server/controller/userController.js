@@ -38,8 +38,8 @@ export async function get_user_by_email(req, res) {
 }
 
 export async function login(req, res) {
-  let email = req.body.email;
-  let password = req.body.password;
+  let email = req.query.email;
+  let password = req.query.password;
   let result = await UserBusiness.login(email, password);
   res.json(result);
 }

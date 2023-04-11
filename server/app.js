@@ -1,12 +1,14 @@
 import express, { json, urlencoded } from "express";
+import cors from "cors";
 const app = express();
 const port = 3000;
 
+app.use(cors());
 app.use(json()); // support json encoded bodies
 app.use(urlencoded({ extended: true })); //incoming objects are strings or arrays
 
 import { getAllMovies, GetMovie, AddMovie, GetMovieByDirector, GetMovieByGenre, DeleteMovie } from "./controller/movieController.js";
-import { get_user, get_user_by_email, getall_users, update_user, delete_user, adduser } from "./controller/userController.js";
+import { get_user, get_user_by_email, getall_users, update_user, delete_user, adduser, login } from "./controller/userController.js";
 import { searchController } from "./controller/searchController.js";
 import { connectToDB, closeDBConnection } from "./utils/db.mjs";
 
@@ -39,9 +41,10 @@ async function createServer() {
     app.get("/user", getall_users);
     app.get("/user/:id", get_user);
     app.post("/user", adduser);
-    app.get("/user/:email", get_user_by_email);
-    app.put("/user/:id", update_user);
+    app.get("/user/email/:email", get_user_by_email);
+    app.put("/user/update/:id", update_user);
     app.delete("/user/:id", delete_user);
+    app.get("/login", login);
 
     //user Review resource paths
     app.get("/userReview", getAllReviews);

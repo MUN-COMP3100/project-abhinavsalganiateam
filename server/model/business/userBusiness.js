@@ -41,10 +41,7 @@ export class UserBusiness {
 
   static async update_user(user, userId) {
     let collection = await getCollection();
-    let objs = await collection.updateOne(
-      { userid: userId },
-      { $set: { name: user.name, email: user.email, password: user.password } }
-    );
+    let objs = await collection.updateOne({ userid: userId }, { $set: { name: user.name, email: user.email, password: user.password } });
     return objs;
   }
 

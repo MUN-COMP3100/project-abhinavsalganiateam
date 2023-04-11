@@ -6,6 +6,7 @@ import Footer from "./components/footer";
 import NotFoundPage from "./components/notFoundPage";
 import TvShows from "./components/tvShows";
 import Movies from "./components/movies";
+import ProfilePage from "./components/profilePage";
 function App() {
   return (
     <div className="App">
@@ -19,6 +20,7 @@ function App() {
         <Route path="/tv" element={<TvShows />} />
         {/* <Route path="/tv/:tvId" element={<Main />} /> */}
         <Route path="/*" element={<NotFoundPage />} />
+        <Route path="/profile" element={<ProfilePage />} />
       </Routes>
       <Footer />
       {/* </Router> */}
