@@ -16,7 +16,7 @@ function App() {
   return (
     <div className="App">
       {/* <Router> */}
-      <NavBar user={userdata} setUserState={setUser} />
+      <NavBar user={userdata} onLogout={setUser} />
       <Routes>
         <Route index element={<Main />} />
         <Route path="/auth" element={<AuthPage setUserState={setUser} />} />

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { navLinks } from "../data/navbar";
+
 const AuthPage = ({ setUserState }) => {
   const [isLogin, setIsLogin] = useState(true);
   const [error, setError] = useState(null);

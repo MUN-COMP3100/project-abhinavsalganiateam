@@ -1,26 +1,27 @@
 import React, { useState } from "react";
 import { Link as Links } from "react-scroll";
-
 import { FaBars, FaTimes } from "react-icons/fa";
-import { Link } from "react-router-dom";
-
+import { Link, useNavigate } from "react-router-dom";
 import { navLinks, socialLinks } from "../data/navbar";
-
 import SearchBar from "./searchBar";
-const Navbar = ({ user }) => {
+
+const Navbar = ({ user, onLogout }) => {
   const [nav, setNav] = useState(false);
-  console.log("Navbar user:", user);
-  const HandleClick = () => setNav(!nav);
+  const Navigate = useNavigate();
+  const handleClick = () => setNav(!nav);
+
+  const handleLogout = () => {
+    if (window.confirm("Are you sure you want to logout?")) {
+      onLogout(null);
+      Navigate("/auth");
+    }
+  };
 
   return (
     <div className="fixed w-full h-[80px] flex justify-between items-center px-4 bg-[#1d1d1f] text-gray-50 z-10">
       <div className="z-1">
-        {/* <Image src={Logo} alt="logo" style={{ width: "50px" }} /> */}
         <h1>IMDB CLONE</h1>
       </div>
-      {/* search bar */}
-
-      {/*menu */}
       <div className="hidden md:flex flex-row">
         <SearchBar />
         <ul className="flex">
@@ -43,18 +44,21 @@ const Navbar = ({ user }) => {
               )}
             </li>
           ))}
+          {user && (
+            <li className="p-4">
+              <button onClick={handleLogout}>Logout</button>
+            </li>
+          )}
         </ul>
       </div>
-      {/*hamburgur menu */}
-      <div onClick={HandleClick} className="md:hidden z-10">
+      <div onClick={handleClick} className="md:hidden z-10">
         {nav ? <FaTimes /> : <FaBars />}
       </div>
-      {/*mobile menu */}
       <ul className={!nav ? "hidden" : "absolute top-0 left-0 w-full h-screen bg-black flex flex-col justify-center items-center"}>
         {navLinks.map((link, index) => (
           <li className="p-4" key={index}>
             {link.path ? (
-              <Link to={link.path} onClick={HandleClick}>
+              <Link to={link.path} onClick={handleClick}>
                 {link.title}
               </Link>
             ) : (
@@ -70,11 +74,15 @@ const Navbar = ({ user }) => {
             )}
           </li>
         ))}
-        {/*social icons */}
+        {user && (
+          <li className="p-4">
+            <button onClick={handleLogout}>Logout</button>
+          </li>
+        )}
         <div>
           <ul className="flex">
             {socialLinks.map((link, index) => (
-              <li key={index} onClick={HandleClick}>
+              <li key={index} onClick={handleClick}>
                 <a href={link.path}>
                   <link.icon size={20} />
                 </a>{" "}
