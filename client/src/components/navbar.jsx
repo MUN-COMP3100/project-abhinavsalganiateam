@@ -4,7 +4,7 @@ import { FaBars, FaTimes } from "react-icons/fa";
 import { Link, useNavigate } from "react-router-dom";
 import { navLinks, socialLinks } from "../data/navbar";
 import SearchBar from "./searchBar";
-
+import { MdLogout } from "react-icons/md";
 const Navbar = ({ user, onLogout }) => {
   const [nav, setNav] = useState(false);
   const Navigate = useNavigate();
@@ -45,8 +45,11 @@ const Navbar = ({ user, onLogout }) => {
             </li>
           ))}
           {user && (
-            <li className="p-4">
-              <button onClick={handleLogout}>Logout</button>
+            <li className="p-4 ">
+              <button onClick={handleLogout} className="flex justify-center items-center gap-2 text-red-500">
+                Logout
+                <MdLogout />
+              </button>
             </li>
           )}
         </ul>
