@@ -8,17 +8,21 @@ import TvShows from "./components/tvShows";
 import Movies from "./components/movies";
 import ProfilePage from "./components/profilePage";
 import MovieDetails from "./components/movieDetails";
+
+import { useState, Context } from "react";
 function App() {
+  const [userdata, setUser] = useState([]);
+
   return (
     <div className="App">
       {/* <Router> */}
-      <NavBar />
+      <NavBar user={userdata} />
       <Routes>
         <Route index element={<Main />} />
-        <Route path="/auth" element={<AuthPage />} />
+        <Route path="/auth" element={<AuthPage setUserState={setUser} />} />
         <Route path="/movies" element={<Movies />} />
-        <Route path="/movies/:movieId" element={<Main />} /> 
-        <Route path="/movieDetails/:id" element={<MovieDetails />}/>
+        {/* <Route path="/movies/:movieId" element={<Main />} />  */}
+        <Route path="/movieDetails/:id" element={<MovieDetails />} />
         <Route path="/tv" element={<TvShows />} />
         {/* <Route path="/tv/:tvId" element={<Main />} /> */}
         <Route path="/*" element={<NotFoundPage />} />

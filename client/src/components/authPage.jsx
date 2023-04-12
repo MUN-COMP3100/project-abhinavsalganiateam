@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-
-const AuthPage = () => {
+import { navLinks } from "../data/navbar";
+const AuthPage = ({ setUserState }) => {
   const [isLogin, setIsLogin] = useState(true);
   const [error, setError] = useState(null);
   const navigate = useNavigate();
@@ -21,11 +21,12 @@ const AuthPage = () => {
 
       if (result) {
         console.log("User logged in successfully");
-
         try {
           fetch(`http://localhost:3000/useremail/${email}`).then((response) => {
             response.json().then((result1) => {
               console.log(result1);
+              // localStorage.setItem("userid", result1[0].userid);
+              setUserState(result1[0]);
               navigate(`/profile/${result1[0].userid}`);
             });
           });

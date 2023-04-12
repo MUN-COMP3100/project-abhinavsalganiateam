@@ -7,8 +7,9 @@ import { useState } from "react";
 import { navLinks, socialLinks } from "../data/navbar";
 
 import SearchBar from "./searchBar";
-function Navbar() {
+const Navbar = ({ user }) => {
   const [nav, setNav] = useState(false);
+  console.log("Navbar user:", user);
   const HandleClick = () => setNav(!nav);
   return (
     <div className="fixed w-full h-[80px] flex justify-between items-center px-4 bg-[#1d1d1f] text-gray-50 z-10">
@@ -25,7 +26,9 @@ function Navbar() {
           {navLinks.map((link, index) => (
             <li className="p-4" key={index}>
               {link.path ? (
-                <Link to={link.path}>{link.title}</Link>
+                <Link to={link.title === "Login/SginUp" ? (user ? `/profile/${user.userid}` : link.path) : link.path}>
+                  {link.title === "Login/SginUp" ? (user ? "Profile" : "Login/SginUp") : link.title}
+                </Link>
               ) : (
                 <Links
                   activeClass="active"
@@ -34,7 +37,7 @@ function Navbar() {
                   duration={link.duration}
                   offset={link.offset}
                   isDynamic={link.isDynamic}>
-                  {link.title}
+                  {link.title === "Login/SginUp" ? (user ? "Profile" : "Login/SginUp") : link.title}
                 </Links>
               )}
             </li>
@@ -81,6 +84,6 @@ function Navbar() {
       </ul>
     </div>
   );
-}
+};
 
 export default Navbar;

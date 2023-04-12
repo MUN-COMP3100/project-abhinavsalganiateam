@@ -9,8 +9,10 @@ const SearchBar = () => {
     // Update suggestions based on the input value
     // You can replace this with an API call to fetch suggestions
     setSuggestions(["Suggestion 1", "Suggestion 2", "Suggestion 3"]);
+
   };
 
+  
   return (
     <div className="hidden xl:flex flex-col justify-center items-center bg-inherit">
       <div className="flex justify-center items-center">
