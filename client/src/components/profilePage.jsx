@@ -7,6 +7,10 @@ const ProfilePage = () => {
   const [user, setUser] = useState([]);
   const [showEditModal, setShowEditModal] = useState(false);
 
+  const handleDelete = () => {
+    console.log("Delete button clicked");
+    // Implement your logic for deleting the user
+  };
   const EditModal = () => {
     const [oldPassword, setOldPassword] = useState("");
     const [newPassword, setNewPassword] = useState("");
@@ -18,7 +22,7 @@ const ProfilePage = () => {
     const oldPasswordRef = useRef();
     const newPasswordRef = useRef();
     const confirmPasswordRef = useRef();
-    const isButtonDisabled = !passwordsMatch || oldPassword === "" || newPassword === "" || confirmPassword === "";
+    // const isButtonDisabled = !passwordsMatch || oldPassword === "" || newPassword === "" || confirmPassword === "";
 
     useEffect(() => {
       setPasswordsMatch(false);
@@ -169,9 +173,12 @@ const ProfilePage = () => {
             )}
           </ul>
         </div>
-        <div className="flex justify-center">
+        <div className="flex justify-between">
           <button className="bg-blue-500 text-white px-5 py-2 text-lg rounded-md hover:bg-blue-600" onClick={() => setShowEditModal(true)}>
             Edit Profile
+          </button>
+          <button className="bg-inherit text-red-500 px-5 py-2 text-lg rounded-md hover:underline ml-5" onClick={handleDelete}>
+            Delete Profile
           </button>
         </div>
       </div>
