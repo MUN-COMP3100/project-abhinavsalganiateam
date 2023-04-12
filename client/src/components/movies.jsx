@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
+import { Link } from "react-router-dom";
 import { Carousel } from "react-responsive-carousel";
 import { RiStarSFill } from "react-icons/ri";
 import MovieList from "./movieList";
@@ -17,7 +18,7 @@ const Movies = () => {
       <Carousel showThumbs={false} autoPlay={true} transitionTime={3} infiniteLoop={true} showStatus={false}>
         {popularMovies.map((movie, index) => (
           <div className="w-full flex items-center justify-center" key={index}>
-            {/* // <Link style={{ textDecoration: "none", color: "white" }} to={`/movie/${movie.id}`}> */}
+            <Link style={{ textDecoration: "none", color: "white" }} to={`/movies/${movie.id}`}>
             <div className="h-[800px]">
               <img
                 alt=""
@@ -34,6 +35,7 @@ const Movies = () => {
               </div>
               <div className="italic text-[1.5rem] mb-[0.25rem] flex text-left w-[80%]">{movie ? movie.overview : ""}</div>
             </div>
+            </Link>
           </div>
         ))}
       </Carousel>
