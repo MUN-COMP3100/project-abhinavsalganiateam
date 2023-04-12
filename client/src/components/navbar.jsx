@@ -1,9 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link as Links } from "react-scroll";
 
 import { FaBars, FaTimes } from "react-icons/fa";
 import { Link } from "react-router-dom";
-import { useState } from "react";
+
 import { navLinks, socialLinks } from "../data/navbar";
 
 import SearchBar from "./searchBar";
@@ -11,6 +11,7 @@ const Navbar = ({ user }) => {
   const [nav, setNav] = useState(false);
   console.log("Navbar user:", user);
   const HandleClick = () => setNav(!nav);
+
   return (
     <div className="fixed w-full h-[80px] flex justify-between items-center px-4 bg-[#1d1d1f] text-gray-50 z-10">
       <div className="z-1">
