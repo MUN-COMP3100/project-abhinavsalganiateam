@@ -20,7 +20,7 @@ export async function get_user(req, res) {
 
 export async function update_user(req, res) {
   let userid = req.params.id;
-  let user = new UserDAO(req.body.userid, req.body.name, req.body.password, req.body.email, req.body.role);
+  let user = new UserDAO(req.body.userid, req.body.name, req.body.email, req.body.password);
   let result = await UserBusiness.update_user(user, userid);
   res.json(result);
 }

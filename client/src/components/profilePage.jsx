@@ -1,15 +1,39 @@
 import React, { useEffect, useState, useRef } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 
-const ProfilePage = () => {
+const ProfilePage = ({ setUserState }) => {
   const { id } = useParams();
   // console.log(`id${id}`);
   const [user, setUser] = useState([]);
   const [showEditModal, setShowEditModal] = useState(false);
 
+  const userNavigate = useNavigate();
   const handleDelete = () => {
     console.log("Delete button clicked");
     // Implement your logic for deleting the user
+    //confirm delete
+    if (window.confirm("Are you sure you want to delete your account?")) {
+      try {
+        fetch(`http://localhost:3000/user/delete/${id}`, {
+          method: "DELETE",
+        })
+          .then((response) => response.json())
+          .then((result) => {
+            console.log(result);
+            if (result.deletedCount) {
+              setUserState(null);
+              userNavigate("/auth");
+            }
+          })
+          .catch((error) => {
+            console.log(error);
+          });
+      } catch (error) {
+        console.log(error);
+      }
+    } else {
+      console.log("Delete cancelled");
+    }
   };
   const EditModal = () => {
     const [oldPassword, setOldPassword] = useState("");
@@ -17,6 +41,7 @@ const ProfilePage = () => {
     const [confirmPassword, setConfirmPassword] = useState("");
     const [newName, setNewName] = useState(user.name);
     const [passwordsMatch, setPasswordsMatch] = useState(false);
+    const [oldpasswordMatch, setOldpasswordMatch] = useState(false);
     // setPasswordsMatch(false);
     const nameRef = useRef();
     const oldPasswordRef = useRef();
@@ -26,16 +51,20 @@ const ProfilePage = () => {
 
     useEffect(() => {
       setPasswordsMatch(false);
-      if (newPassword !== "" && confirmPassword !== "") {
+      if ((newPassword !== "" && confirmPassword !== "") || oldPassword !== "") {
         if (newPassword === confirmPassword) {
           setPasswordsMatch(true);
         } else {
           setPasswordsMatch(false);
         }
-      } else {
-        setPasswordsMatch(false);
+
+        if (oldPassword.match(user.password)) {
+          setOldpasswordMatch(true);
+        } else {
+          setOldpasswordMatch(false);
+        }
       }
-    }, [newPassword, confirmPassword]);
+    }, [newPassword, confirmPassword, oldPassword]);
 
     useEffect(() => {
       setPasswordsMatch(false);
@@ -45,6 +74,33 @@ const ProfilePage = () => {
       e.preventDefault();
       console.log("Edit form submitted");
       // Implement your logic for checking the passwords and updating the user data
+      try {
+        fetch(`http://localhost:3000/user/update/${id}`, {
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            userid: user.userid,
+            name: newName,
+            email: user.email,
+            password: newPassword,
+          }),
+        })
+          .then((response) => response.json())
+          .then((result) => {
+            console.log(result);
+            if (result.acknowledged) {
+              setShowEditModal(false);
+              window.location.reload();
+            }
+          })
+          .catch((error) => {
+            console.log(error);
+          });
+      } catch (error) {
+        console.log(error);
+      }
     };
 
     return (
@@ -60,6 +116,7 @@ const ProfilePage = () => {
                 className="w-full p-2 rounded-md border-2 focus:border-white bg-gray-950"
                 value={newName}
                 onChange={(e) => setNewName(e.target.value)}
+                required
               />
             </div>
             <div className="mb-5">
@@ -70,6 +127,7 @@ const ProfilePage = () => {
                 className="w-full p-2 rounded-md border-2 border-white bg-gray-950"
                 value={oldPassword}
                 onChange={(e) => setOldPassword(e.target.value)}
+                required
               />
             </div>
             <div className="mb-5">
@@ -80,6 +138,7 @@ const ProfilePage = () => {
                 className="w-full p-2 rounded-md border-2 border-white bg-gray-950"
                 value={newPassword}
                 onChange={(e) => setNewPassword(e.target.value)}
+                required
               />
             </div>
             <div className="mb-5">
@@ -90,18 +149,25 @@ const ProfilePage = () => {
                 className="w-full p-2 rounded-md border-2 border-white bg-gray-950"
                 value={confirmPassword}
                 onChange={(e) => setConfirmPassword(e.target.value)}
+                required
               />
             </div>
-            <p className={`text-sm ${passwordsMatch ? "text-green-500" : "text-red-500"}`}>
-              {passwordsMatch ? "Passwords match" : newPassword === "" && confirmPassword === "" ? "" : "Passwords do not match"}
+            <p className={`text-sm ${passwordsMatch && oldpasswordMatch ? "text-green-500" : "text-red-500"}`}>
+              {oldPassword === "" || newPassword === "" || confirmPassword === ""
+                ? "Please fill all the fields"
+                : oldpasswordMatch
+                ? passwordsMatch
+                  ? "Passwords match"
+                  : "Passwords do not match"
+                : "Old password is incorrect"}
             </p>
             <div className="flex justify-between">
               <button
                 type="submit"
                 className={`bg-blue-500 text-white px-5 py-2 text-lg rounded-md hover:bg-blue-600${
-                  !passwordsMatch ? " opacity-50 cursor-not-allowed" : ""
+                  !(passwordsMatch && oldpasswordMatch) ? " opacity-50 cursor-not-allowed" : ""
                 }`}
-                disabled={!passwordsMatch}>
+                disabled={!(passwordsMatch && oldpasswordMatch)}>
                 Save
               </button>
 

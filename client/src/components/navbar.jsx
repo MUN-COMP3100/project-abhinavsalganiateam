@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link as Links } from "react-scroll";
 import { FaBars, FaTimes } from "react-icons/fa";
 import { Link, useNavigate } from "react-router-dom";
@@ -9,6 +9,13 @@ const Navbar = ({ user, onLogout }) => {
   const [nav, setNav] = useState(false);
   const Navigate = useNavigate();
   const handleClick = () => setNav(!nav);
+
+  // useEffect(() => {
+  //   if (!user) {
+  //     Navigate("/auth");
+  //     window.location.reload();
+  //   }
+  // }, [user, Navigate]);
 
   const handleLogout = () => {
     if (window.confirm("Are you sure you want to logout?")) {
