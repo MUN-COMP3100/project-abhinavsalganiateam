@@ -11,7 +11,7 @@ import MovieDetails from "./components/movieDetails";
 
 import { useState } from "react";
 function App() {
-  const [userdata, setUser] = useState([]);
+  const [userdata, setUser] = useState(null);
 
   return (
     <div className="App">

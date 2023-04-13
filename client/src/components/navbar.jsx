@@ -1,4 +1,4 @@
-import React, { useState} from "react";
+import React, { useState } from "react";
 import { Link as Links } from "react-scroll";
 import { FaBars, FaTimes } from "react-icons/fa";
 import { Link, useNavigate } from "react-router-dom";
@@ -35,9 +35,10 @@ const Navbar = ({ user, onLogout }) => {
           {navLinks.map((link, index) => (
             <li className="p-4" key={index}>
               {link.path ? (
-                <Link to={link.title === "Login/SginUp" ? (user ? `/profile/${user.userid}` : link.path) : link.path}>
-                  {link.title === "Login/SginUp" ? (user ? "Profile" : "Login/SginUp") : link.title}
-                </Link>
+                // <Link to={link.title === "Login/SginUp" ? (user ? `/profile/${user.userid}` : link.path) : link.path}>
+                //   {link.title === "Login/SginUp" ? (user ? "Profile" : "Login/SginUp") : link.title}
+                // </Link>
+                <Link to={link.path}>{link.title}</Link>
               ) : (
                 <Links
                   activeClass="active"
@@ -46,18 +47,24 @@ const Navbar = ({ user, onLogout }) => {
                   duration={link.duration}
                   offset={link.offset}
                   isDynamic={link.isDynamic}>
-                  {link.title === "Login/SginUp" ? (user ? "Profile" : "Login/SginUp") : link.title}
+                  {/* {link.title === "Login/SginUp" ? (user ? "Profile" : "Login/SginUp") : link.title} */}
+                  {link.title}
                 </Links>
               )}
             </li>
           ))}
           {user && (
-            <li className="p-4 ">
-              <button onClick={handleLogout} className="flex justify-center items-center gap-2 text-red-500">
-                Logout
-                <MdLogout />
-              </button>
-            </li>
+            <div className="flex">
+              <li className="p-4">
+                <Link to={`/profile/${user.userid}`}>Profile</Link>
+              </li>
+              <li className="p-4 ">
+                <button onClick={handleLogout} className="flex justify-center items-center gap-2 text-red-500">
+                  Logout
+                  <MdLogout />
+                </button>
+              </li>
+            </div>
           )}
         </ul>
       </div>
