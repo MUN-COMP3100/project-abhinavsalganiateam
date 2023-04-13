@@ -26,7 +26,7 @@ function App() {
         <Route path="/tv" element={<TvShows />} />
         {/* <Route path="/tv/:tvId" element={<Main />} /> */}
         <Route path="/*" element={<NotFoundPage />} />
-        <Route path="/profile/:id" element={<ProfilePage setUserState={setUser} />} />
+        <Route path="/profile/:id" element={<ProfilePage userState={userdata} setUserState={setUser} />} />
       </Routes>
       <Footer />
       {/* </Router> */}

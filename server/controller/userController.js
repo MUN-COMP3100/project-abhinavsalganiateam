@@ -2,9 +2,25 @@ import { UserDAO } from "../model/DAO/userDAO.js";
 import { UserBusiness } from "../model/business/userBusiness.js";
 
 export async function adduser(req, res) {
-  let user = new UserDAO(req.body.userid, req.body.name, req.body.password, req.body.email);
-  let result = await UserBusiness.add_user(user);
-  res.json(result);
+  let user = new UserDAO(req.body.userid, req.body.name, req.body.email, req.body.password);
+  //validate userid and email
+  let validate_email = await UserBusiness.validate_email(user.email);
+  let validate_userid = await UserBusiness.validate_userid(user.userid);
+  console.log(validate_email);
+  console.log(validate_userid);
+  if (validate_email == true) {
+    if (validate_userid == true) {
+      let result = await UserBusiness.add_user(user);
+      console.log(result);
+      return "user added successfully";
+    } else {
+      console.log("userid already exists");
+      res.json("userid already exists");
+    }
+  } else {
+    console.log("email already exists");
+    res.json("email already exists");
+  }
 }
 
 export async function getall_users(req, res) {
@@ -47,5 +63,11 @@ export async function login(req, res) {
 export async function validate_userid(req, res) {
   let userid = req.params.id;
   let result = await UserBusiness.validate_userid(userid);
+  res.json(result);
+}
+
+export async function validate_email(req, res) {
+  let email = req.params.email;
+  let result = await UserBusiness.validate_email(email);
   res.json(result);
 }

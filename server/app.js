@@ -40,7 +40,7 @@ async function createServer() {
     // user resource paths
     app.get("/user", getall_users);
     app.get("/user/:id", get_user);
-    app.post("/user", adduser);
+    app.post("/adduser", adduser);
     app.get("/useremail/:email", get_user_by_email);
     app.put("/user/update/:id", update_user);
     app.delete("/user/delete/:id", delete_user);

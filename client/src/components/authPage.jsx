@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
 const AuthPage = ({ setUserState }) => {
@@ -6,46 +6,89 @@ const AuthPage = ({ setUserState }) => {
   const [error, setError] = useState(null);
   const navigate = useNavigate();
 
+  useEffect(() => {
+    setUserState(null);
+  }, []);
   const toggleAuthMode = () => {
     setIsLogin(!isLogin);
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const email = e.target.email.value;
-    const password = e.target.password.value;
-    // Handle form submission for login or signup
-    try {
-      const response = await fetch(`http://localhost:3000/login?email=${email}&password=${password}`);
-      const result = await response.json();
+    if (isLogin) {
+      // Handle login
+      const email = e.target.email.value;
+      const password = e.target.password.value;
+      // Handle form submission for login or signup
+      try {
+        const response = await fetch(`http://localhost:3000/login?email=${email}&password=${password}`);
+        const result = await response.json();
 
-      if (result) {
-        console.log("User logged in successfully");
-        try {
-          fetch(`http://localhost:3000/useremail/${email}`).then((response) => {
-            response.json().then((result1) => {
-              console.log(result1);
-              // localStorage.setItem("userid", result1[0].userid);
-              setUserState(result1[0]);
-              navigate(`/profile/${result1[0].userid}`);
+        if (result) {
+          console.log("User logged in successfully");
+          try {
+            fetch(`http://localhost:3000/useremail/${email}`).then((response) => {
+              response.json().then((result1) => {
+                console.log(result1);
+                // localStorage.setItem("userid", result1[0].userid);
+                setUserState(result1[0]);
+                navigate(`/profile/${result1[0].userid}`);
+              });
             });
-          });
-        } catch (error) {
-          console.log(error);
+          } catch (error) {
+            console.log(error);
+          }
+        } else {
+          console.log("User not found or incorrect credentials");
+          setError("User not found or incorrect credentials");
         }
-        // navigate(`/profile/${result1.userid}}`);
-
-        // Handle successful login, e.g., redirect to another page
-      } else {
-        console.log("User not found or incorrect credentials");
-        setError("User not found or incorrect credentials");
-        // Handle unsuccessful login, e.g., show an error message
+      } catch (error) {
+        console.error("Error during login:", error);
+        // Handle error, e.g., show an error message
       }
-    } catch (error) {
-      console.error("Error during login:", error);
-      // Handle error, e.g., show an error message
+    } else {
+      // Handle signup
+      const email = e.target.email.value;
+      const password = e.target.password.value;
+      const name = e.target.name.value;
+      const userid = e.target.userid.value;
+      // Handle form submission for login or signup
+      //validate userid
+
+      try {
+        //add user to database
+        fetch("http://localhost:3000/adduser", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            userid: userid,
+            name: name,
+            email: email,
+            password: password,
+          }),
+        })
+          .then((response) => response.text())
+          .then((result) => {
+            console.log(result);
+            if (result.match("user added successfully")) {
+              console.log(result);
+              // Handle successful login, e.g., redirect to another page
+            } else {
+              console.log(result);
+              setError(result);
+              // Handle unsuccessful login, e.g., show an error message
+            }
+          })
+          .catch((error) => {
+            console.log(error);
+          });
+      } catch (error) {
+        console.error("Error during login:", error);
+        // Handle error, e.g., show an error message
+      }
     }
-    // Handle signup
   };
 
   return (
@@ -60,7 +103,7 @@ const AuthPage = ({ setUserState }) => {
               </label>
               <input
                 type="text"
-                id="name"
+                id="userid"
                 required
                 className="border border-gray-300 w-full px-3 py-2 rounded focus:outline-none focus:border-amber-500 text-black"
               />

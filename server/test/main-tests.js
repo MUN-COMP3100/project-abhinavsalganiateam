@@ -62,10 +62,10 @@ describe("IMDB Clone app - testing with Mocha", function () {
           let data = {
             userid: "johnsmith",
             name: "John Smith",
-            email: "JOhnsmoth@exmple.com",
+            email: "JOhnssmoth@exmple.com",
             password: "RMk2002.",
           };
-          let res = await instance.post("/user", data);
+          let res = await instance.post("/adduser", data);
           strictEqual(res.data.acknowledged, true);
         });
 
@@ -86,12 +86,12 @@ describe("IMDB Clone app - testing with Mocha", function () {
             name: "John Smith",
             email: "rashodk@gmail.com",
           };
-          let res = await instance.put("/user/johnsmith", data);
+          let res = await instance.put("/user/update/johnsmith", data);
           strictEqual(res.data.modifiedCount, 1);
         });
 
         it("5. pass - delete user ", async function () {
-          let res = await instance.delete("/user/johnsmith");
+          let res = await instance.delete("/user/delete/johnsmith");
           strictEqual(res.data.deletedCount, 1);
         });
       });

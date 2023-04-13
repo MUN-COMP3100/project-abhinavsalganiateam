@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useRef } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 
-const ProfilePage = ({ setUserState }) => {
+const ProfilePage = ({ userState, setUserState }) => {
   const { id } = useParams();
   // console.log(`id${id}`);
   const [user, setUser] = useState([]);
@@ -47,7 +47,6 @@ const ProfilePage = ({ setUserState }) => {
     const oldPasswordRef = useRef();
     const newPasswordRef = useRef();
     const confirmPasswordRef = useRef();
-    // const isButtonDisabled = !passwordsMatch || oldPassword === "" || newPassword === "" || confirmPassword === "";
 
     useEffect(() => {
       setPasswordsMatch(false);
@@ -70,6 +69,7 @@ const ProfilePage = ({ setUserState }) => {
       setPasswordsMatch(false);
     }, []);
 
+    const isButtonDisabled = !passwordsMatch || oldPassword === "" || newPassword === "" || confirmPassword === "" || !oldpasswordMatch;
     const handleEditSubmit = (e) => {
       e.preventDefault();
       console.log("Edit form submitted");
@@ -165,9 +165,9 @@ const ProfilePage = ({ setUserState }) => {
               <button
                 type="submit"
                 className={`bg-blue-500 text-white px-5 py-2 text-lg rounded-md hover:bg-blue-600${
-                  !(passwordsMatch && oldpasswordMatch) ? " opacity-50 cursor-not-allowed" : ""
+                  isButtonDisabled ? " opacity-50 cursor-not-allowed" : ""
                 }`}
-                disabled={!(passwordsMatch && oldpasswordMatch)}>
+                disabled={isButtonDisabled}>
                 Save
               </button>
 
@@ -239,7 +239,7 @@ const ProfilePage = ({ setUserState }) => {
             )}
           </ul>
         </div>
-        <div className="flex justify-between">
+        <div className={userState ? "flex justify-between" : "hidden"}>
           <button className="bg-blue-500 text-white px-5 py-2 text-lg rounded-md hover:bg-blue-600" onClick={() => setShowEditModal(true)}>
             Edit Profile
           </button>
