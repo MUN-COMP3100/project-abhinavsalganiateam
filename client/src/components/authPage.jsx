@@ -7,7 +7,7 @@ const AuthPage = ({ setUserState }) => {
 
   useEffect(() => {
     setUserState(null);
-  }, []);
+  }, [setUserState]);
   const toggleAuthMode = () => {
     setIsLogin(!isLogin);
   };
