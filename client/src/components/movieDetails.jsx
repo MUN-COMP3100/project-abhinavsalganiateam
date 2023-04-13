@@ -141,7 +141,7 @@ const MovieDetails = () => {
                 ))}
               </div>
             ) : (
-              <p className="text-gray-100">No reviews found.</p>
+              <p className="text-gray-100">Be the first to review this movie!</p>
             )}
           </div>
 
