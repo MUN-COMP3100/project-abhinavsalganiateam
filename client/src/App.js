@@ -9,7 +9,7 @@ import Movies from "./components/movies";
 import ProfilePage from "./components/profilePage";
 import MovieDetails from "./components/movieDetails";
 
-import { useState, Context } from "react";
+import { useState } from "react";
 function App() {
   const [userdata, setUser] = useState([]);
 
