@@ -12,14 +12,14 @@ export async function adduser(req, res) {
     if (validate_userid == true) {
       let result = await UserBusiness.add_user(user);
       console.log(result);
-      return "user added successfully";
+      res.send("user added successfully");
     } else {
       console.log("userid already exists");
-      res.json("userid already exists");
+      res.send("userid already exists");
     }
   } else {
     console.log("email already exists");
-    res.json("email already exists");
+    res.send("email already exists");
   }
 }
 

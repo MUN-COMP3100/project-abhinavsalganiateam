@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-
 const AuthPage = ({ setUserState }) => {
   const [isLogin, setIsLogin] = useState(true);
   const [error, setError] = useState(null);
@@ -54,7 +53,7 @@ const AuthPage = ({ setUserState }) => {
       const userid = e.target.userid.value;
       // Handle form submission for login or signup
       //validate userid
-
+      const newuserdata = { userid: userid, name: name, email: email, password: password };
       try {
         //add user to database
         fetch("http://localhost:3000/adduser", {
@@ -62,22 +61,23 @@ const AuthPage = ({ setUserState }) => {
           headers: {
             "Content-Type": "application/json",
           },
-          body: JSON.stringify({
-            userid: userid,
-            name: name,
-            email: email,
-            password: password,
-          }),
+          body: JSON.stringify(newuserdata),
         })
           .then((response) => response.text())
           .then((result) => {
             console.log(result);
             if (result.match("user added successfully")) {
-              console.log(result);
+              console.log("User added successfully");
+              setIsLogin(true);
+              setError("");
+              setUserState(newuserdata);
+              navigate(`/profile/${newuserdata.userid}`);
+              // window.location.reload();
               // Handle successful login, e.g., redirect to another page
             } else {
               console.log(result);
               setError(result);
+
               // Handle unsuccessful login, e.g., show an error message
             }
           })
