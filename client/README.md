@@ -50,7 +50,7 @@ Access/Usage - The marker can access the user authentication using the username 
 
 Tests - The user should be able to login to the application using the username and password. The user should be able to register to the application using the username and password.
 
-4. User Profile - We have used the user profile to store the user profile. The user can add the profile to the database and the user can also delete the profile from the database.
+4. User Profile - We have used the mongoDB database to store the user profiles. The user can add and edit the profile to the database and the user can also delete the profile from the database.
 
 Working - Yes
 
@@ -59,6 +59,8 @@ Code can be found in - profilePage.jsx
 Access/Usage - The marker can access the user profile using the username and password.
 
 Tests - The user should be able to add the profile to the database using the username and password. The user should be able to delete the profile from the database using the username and password.
+
+To test it properly, you can create a new profile using Sign up and then delete the profile using Delete button.
 
 5. User Reviews Database - We have used the user reviews database to store the user reviews. The user can add the reviews to the database and the user can also delete the reviews from the database.
 
@@ -97,6 +99,10 @@ Code can be found in - searchBar.jsx
 
 Access/Usage - The marker can search the movies using the search engine.
 
+Tests - The user should be able to write the movie name in the search bar.
+
+GUI works as expected.
+
 3. Popular Movies/Upcoming movies - The user can see the popular and upcoming movies on the home page.
 
 Working - Yes
@@ -105,9 +111,11 @@ Code can be found in - home.jsx, movieList.jsx, movies.jsx
 
 Access/Usage - The marker can see the popular movies on the home page.
 
+Tests - The user should be able to see the popular movies on the home page.
+
 GUI works as expected.
 
-4. User Reviews - The user can add the reviews to the database and the user can also delete the reviews from the database.
+4. User Reviews - The user can see the Add Review button after clicking on a movie card. The user can see the reviews and add reviews using the Add Review button. When the user clicks on the Add Review button, the user can see the form to add the review. The user can add the review and see the review on the page.
 
 Working - Client side only
 
@@ -115,7 +123,7 @@ Code can be found in - movieReviews.jsx
 
 Access/Usage - The marker can see the code and reasonably grade the feature.
 
-4. User Profiles - The user can add the profile to the database and the user can also delete the profile from the database.
+5. User Profiles - After clicking Log in/Sign up button, the user can see the form to add the profile. The user can add the profile and see the profile on the page. The user can also delete the profile.
 
 Working - Yes
 
@@ -127,7 +135,7 @@ Tests - The user should be able to add the profile using username and password a
 
 GUI works as expected.
 
-5. Sign in/ Sign up - The user can login to the application using the username and password. The user can also register to the application using the username and password.
+6. Sign in/ Sign up - The user can login to the application using the username and password. The user can also register to the application using the username and password.
 
 Working - Yes
 
@@ -137,14 +145,6 @@ Access/Usage - The marker can login to the application using the username and pa
 
 Tests - The user should be able to login to the application using the username and password. The user should be able to register to the application using the username and password.
 
-6. Watch it here - After clicking on the movie card, the user can see watch it here to help user to watch the movie.
-
-Working - Yes
-
-Code can be found in - movieDetails.jsx
-
-Access/Usage - The marker can click on the movie card and see the details of the movie.
-
-Tests - The user should be able to see the watch it here after clicking on the movie card.
+GUI works as expected.
 
 ## To run the application
