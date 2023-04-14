@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
 import AddReviewModal from "./addReviewModal";
-import { getMovieReviews } from "./movieReviews";
+// import { getMovieReviews } from "./movieReviews";
 import { FaStar } from "react-icons/fa";
 
 const MovieDetails = ({ user }) => {
