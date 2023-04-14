@@ -108,6 +108,10 @@ I have used the following resources to help me with this project:
    - Tests - The user should be able to login to the application using the username and password. The user should be able to register to the application using the username and password.
    - GUI works as expected.
 
+7. **Scalability** - The application is scalable and can be used for any other purpose.
+   - Working - Yes
+   - Client Side is made using ReactJS and the server side is made using NodeJS and ExpressJS.Components are resuable and can be used for any other purpose. The application is scalable and can add features very easily without having to change the existing codes.
+
 ## Running the Application
 
 install the dependencies for each client and server side by running the following commands in your terminal:
