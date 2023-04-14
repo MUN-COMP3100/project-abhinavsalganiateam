@@ -2,7 +2,7 @@
 
 ## Project Proposal
 
-Please see the project proposal document
+Please see the project proposal document in the server folder.
 
 ## Project Video
 
@@ -12,17 +12,21 @@ Please see the project video
 
 I have used the following resources to help me with this project:
 
+
+
 ## Server side features
 
 1. API Integration - We have used the third party API to get the data from the server. The API is used to get the data from the server and then the data is used to display the data on the client side. We have used the following APIs:
 
 Working - Yes
 
-Code can be found in - home.jsx, movieList.jsx, movies.jsx, tvList.jsx, tvShows.jsx
+Code can be found in - home.jsx, movieList.jsx, movies.jsx, tvList.jsx, tvShows.jsx, movieDetails.jsx
 
 Access/Usage - The marker can access the API using the API key.
 
 Tests - The API should return the data in the correct format and the data should be visible on the client side.
+
+If you can see the data on the client side, then the API works.
     
 2. Popular and Upcoming Movies/Tv Shows - We have used the popular and upcoming movies to display the popular and upcoming movies. The user can see the popular and upcoming movies on the home page.
 
@@ -30,7 +34,9 @@ Working - Yes
 
 Code can be found in - home.jsx, movieList.jsx, movies.jsx and tvList.jsx, tvShows.jsx
 
-Access/Usage - The marker can access the popular and upcoming movies using the API key.
+Access/Usage - The marker can access the popular and upcoming movies using the API key and that can be seen on the home page.
+
+If you can see the popular and upcoming movies on the home page, then the API works.
 
 Tests - The API should return the data in the correct format and the data should be visible on the client side.
 
