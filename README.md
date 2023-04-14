@@ -47,9 +47,9 @@ I have used the following resources to help me with this project:
    - Access/Usage - The marker can access the user profile using the username and password.
    - Tests - The user should be able to add the profile to the database using the username and password. The user should be able to delete the profile from the database using the username and password. To test it properly, you can create a new profile using Sign up and then delete the profile using the Delete button.
 
-5. **User Reviews Database** - We have used the user reviews database to store the user reviews. The user can add the reviews to the database, and the user can also delete the reviews from the database.
+5. **User Reviews Database** - We have used the user reviews database to store the user reviews. The user can add the reviews to the database, and user can see all the reviews user has added in the past in the user profile page.
 
-   - Working - No
+   - Working - yes
    - Code can be found in - `movieReviews.jsx`
    - Access/Usage - The marker can see the code and reasonably grade the feature.
 
@@ -128,11 +128,11 @@ npm install # to install all the dependencies
 
 now start the server side first by running the following command in your terminal: (make sure you have created the database on your localhost. If you have not created the database, please follow the [instructions](#creating-the-database-on-localhost)])
 
-
 ```bash
 cd server # to go to the server directory make sure you are in the root directory in your terminal
 npm start # to start the server on port 3000
 ```
+
 and then start the client side by running the following command in your terminal:
 
 ```bash
@@ -142,13 +142,14 @@ npm start # to start the client on port 3001
 this will open the application in your browser
 ```
 
-now you can use the application 
+now you can use the application
 
-## important points 
-* The application is not responsive, so please use the application on a desktop.
-* To add Reviews to the movies , you need to create a new account. 
-* The server and client side are running on different ports, so you need to run both the server and client side to use the application.
-* you need a internet connection to use the application since we are using the TMDB API to fetch the movies.
+## important points
+
+- The application is not responsive, so please use the application on a desktop.
+- To add Reviews to the movies , you need to create a new account.
+- The server and client side are running on different ports, so you need to run both the server and client side to use the application.
+- you need a internet connection to use the application since we are using the TMDB API to fetch the movies.
 
 ### Creating the Database on Localhost
 
