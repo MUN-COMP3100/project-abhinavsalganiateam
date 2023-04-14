@@ -12,6 +12,12 @@ Please see the project video.
 
 I have used the following resources to help me with this project:
 
+- [React Router](https://reactrouter.com/web/guides/quick-start)
+- [React Bootstrap Modal](https://react-bootstrap.github.io/components/modal/)
+
+
+
+
 ## Server-side Features
 
 1. **API Integration** - We have used the third-party API to get the data from the server. The API is used to get the data from the server and then the data is used to display the data on the client side. We have used the following APIs:
