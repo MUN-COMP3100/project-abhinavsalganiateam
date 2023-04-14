@@ -166,7 +166,7 @@ const MovieDetails = ({ user }) => {
               onClick={handleAddReviewOpen}>
               Add Review
             </button>
-            <div className="flex flex-col lg:flex-row h-[550px] lg:h-[100%] gap-6 mt-5 overflow-scroll scrollbar-hide snap-y lg:snap-x snap-proximity">
+            <div className="flex flex-col h-[550px] gap-6 mt-5 overflow-scroll scrollbar-hide snap-y lg:snap-x snap-proximity">
               {reviews &&
                 reviews.map((review, index) => (
                   <div key={index} className="bg-gray-800 rounded-lg p-4 w-full scale-[85%] snap-start">
