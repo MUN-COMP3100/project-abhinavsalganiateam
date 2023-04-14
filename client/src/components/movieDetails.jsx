@@ -44,6 +44,7 @@ const MovieDetails = () => {
   const handleAddReviewSubmit = (review) => {
     console.log(`Username: ${review.username}, Review: ${review.review}`);
     setIsOpen(false);
+    setReviews((prevReviews) => [{ author: review.username, content: review.review }, ...prevReviews]);
   };
 
   return (
