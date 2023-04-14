@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
 import AddReviewModal from "./addReviewModal";
-import { getMovieReviews} from "./movieReviews";
+import { getMovieReviews } from "./movieReviews";
 
-const MovieDetails = () => {
+const MovieDetails = ({ user }) => {
+  console.log(user);
   const { id } = useParams();
   const [movie, setMovie] = useState({});
   const [isOpen, setIsOpen] = useState(false);
@@ -24,7 +25,9 @@ const MovieDetails = () => {
 
   const getMovieReviews = async (movieId) => {
     try {
-      const response = await fetch(`https://api.themoviedb.org/3/movie/${movieId}/reviews?api_key=4e44d9029b1270a757cddc766a1bcb63&language=en-US&page=1`)
+      const response = await fetch(
+        `https://api.themoviedb.org/3/movie/${movieId}/reviews?api_key=4e44d9029b1270a757cddc766a1bcb63&language=en-US&page=1`
+      );
       const data = await response.json();
       setReviews(data.results);
     } catch (err) {
@@ -32,7 +35,6 @@ const MovieDetails = () => {
       setReviews([]);
     }
   };
-  
 
   const getWatchProviders = (movieId) => {
     fetch(`https://api.themoviedb.org/3/movie/${movieId}/watch/providers?api_key=4e44d9029b1270a757cddc766a1bcb63`)
@@ -40,7 +42,7 @@ const MovieDetails = () => {
       .then((data) => setWatchProviders(data.results.CA));
   };
 
-    const handleAddReviewOpen = () => {
+  const handleAddReviewOpen = () => {
     setIsOpen(true);
   };
 
@@ -49,24 +51,23 @@ const MovieDetails = () => {
   };
 
   const handleAddReviewSubmit = (review) => {
-    fetch('/reviews', {
-      method: 'POST',
+    fetch("/reviews", {
+      method: "POST",
       headers: {
-        'Content-Type': 'application/json'
+        "Content-Type": "application/json",
       },
-      body: JSON.stringify(review)
+      body: JSON.stringify(review),
     })
-    .then(response => response.json())
-    .then(data => {
-      console.log(`Username: ${data.username}, Review: ${data.review}`);
-      setIsOpen(false);
-      getMovieReviews(id); // fetch reviews again to update the list
-    })
-    .catch(error => {
-      console.error('Error:', error);
-    });
+      .then((response) => response.json())
+      .then((data) => {
+        console.log(`Username: ${data.username}, Review: ${data.review}`);
+        setIsOpen(false);
+        getMovieReviews(id); // fetch reviews again to update the list
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+      });
   };
-  
 
   return (
     <div className="min-h-screen w-full bg-[#1d1d1f] flex flex-col items-center justify-center">
@@ -167,8 +168,7 @@ const MovieDetails = () => {
             )}
           </div>
 
-          <AddReviewModal isOpen={isOpen} handleClose={handleAddReviewClose} handleSubmit={handleAddReviewSubmit} />
-
+          <AddReviewModal isOpen={isOpen} handleClose={handleAddReviewClose} movieid={id} user={user} />
         </div>
       </div>
     </div>

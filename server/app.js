@@ -48,8 +48,8 @@ async function createServer() {
 
     //user Review resource paths
     app.get("/userReview", getAllReviews);
-    app.get("/userReview/:userid", GetReviewByMovie);
-    app.post("/userReview", AddReview);
+    app.get("/userReview/:movieid", GetReviewByMovie);
+    app.post("/userReview/add", AddReview);
     app.get("/userReview/user/:id", GetReviewByUser);
     app.put("/userReview/update", UpdateReview);
     app.delete("/userReview/delete", DeleteReview);

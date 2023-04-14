@@ -43,24 +43,24 @@ export class userReviewBusiness {
     }
   }
 
-  static async getReviewByMovie(title) {
+  static async getReviewByMovie(id) {
     let collection = await getCollection();
-    let objs = await collection.find({ movie_title: title }).toArray();
+    let objs = await collection.find({ movie_id: id }).toArray();
     return objs;
   }
 
-  static async updateReview(Review, userid, movie_title) {
+  static async updateReview(Review, userid, movie_id) {
     let collection = await getCollection();
     let objs = await collection.updateOne(
-      { userid: userid, movieid: movie_title },
+      { userid: userid, movieid: movie_id },
       { $set: { review: Review.review, rating: Review.rating } }
     );
     return objs;
   }
 
-  static async deleteReview(userId, movieTitle) {
+  static async deleteReview(userId, movieId) {
     let collection = await getCollection();
-    let objs = collection.deleteOne({ userid: userId, movie_title: movieTitle });
+    let objs = collection.deleteOne({ userid: userId, movie_id: movieId });
     return objs;
   }
 }

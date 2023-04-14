@@ -22,7 +22,7 @@ function App() {
         <Route path="/auth" element={<AuthPage setUserState={setUser} />} />
         <Route path="/movies" element={<Movies />} />
         {/* <Route path="/movies/:movieId" element={<Main />} />  */}
-        <Route path="/movieDetails/:id" element={<MovieDetails />} />
+        <Route path="/movieDetails/:id" element={<MovieDetails user={userdata} />} />
         <Route path="/tv" element={<TvShows />} />
         {/* <Route path="/tv/:tvId" element={<Main />} /> */}
         <Route path="/*" element={<NotFoundPage />} />

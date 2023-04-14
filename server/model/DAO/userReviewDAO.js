@@ -1,7 +1,7 @@
 export class UserReviewDTO {
-  constructor(userid, movieTitle, review, rating) {
+  constructor(userid, movie_id, review, rating) {
     this.userid = userid;
-    this.movie_title = movieTitle;
+    this.movie_id = movie_id;
     this.review = review;
     this.rating = rating;
   }

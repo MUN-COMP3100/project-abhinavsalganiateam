@@ -25,7 +25,7 @@ const Navbar = ({ user, onLogout }) => {
   };
 
   return (
-    <div className="fixed w-full h-[80px] flex justify-between items-center px-4 bg-[#1d1d1f] text-gray-50 z-10">
+    <div className="fixed w-full h-[80px] flex justify-between items-center px-4 bg-[#1d1d1f] text-gray-50 z-10 ">
       <div className="z-1">
         <h1>EntertainMate</h1>
       </div>
@@ -53,19 +53,27 @@ const Navbar = ({ user, onLogout }) => {
               )}
             </li>
           ))}
-          {user && (
-            <div className="flex">
-              <li className="p-4">
-                <Link to={`/profile/${user.userid}`}>Profile</Link>
-              </li>
-              <li className="p-4 ">
-                <button onClick={handleLogout} className="flex justify-center items-center gap-2 text-red-500">
-                  Logout
-                  <MdLogout />
-                </button>
-              </li>
-            </div>
-          )}
+          {user
+            ? (console.log(user),
+              (
+                <div className="flex">
+                  <li className="p-4">
+                    <Link to={`/profile/${user.userid}`}>Profile</Link>
+                  </li>
+                  <li className="p-4 ">
+                    <button onClick={handleLogout} className="flex justify-center items-center gap-2 text-red-500">
+                      Logout
+                      <MdLogout />
+                    </button>
+                  </li>
+                </div>
+              ))
+            : (console.log(user),
+              (
+                <li className="p-4">
+                  <Link to="/auth">Login/SignUp</Link>
+                </li>
+              ))}
         </ul>
       </div>
       <div onClick={handleClick} className="md:hidden z-10">
