@@ -62,25 +62,6 @@ const MovieDetails = ({ user }) => {
     setIsOpen(false);
   };
 
-  const handleAddReviewSubmit = (review) => {
-    fetch("/reviews", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(review),
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        console.log(`Username: ${data.username}, Review: ${data.review}`);
-        setIsOpen(false);
-        getMovieReviews(id); // fetch reviews again to update the list
-      })
-      .catch((error) => {
-        console.error("Error:", error);
-      });
-  };
-
   return (
     <div className="min-h-screen w-full bg-[#1d1d1f] flex flex-col items-center justify-center">
       <div className=" mt-[80px] bg-black drop-shadow-lg rounded-md p-10 w-full sm:w-3/4 lg:w-full text-white">
