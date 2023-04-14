@@ -155,9 +155,11 @@ now you can use the application
 
 To create the database on your localhost, run the following commands in your terminal:
 
+```bash
 mongoimport --db=IMDB --type=csv --headerline --collection=movies movie.csv
 mongoimport --db=IMDB --type=csv --headerline --collection=users user.csv
 mongoimport --db=IMDB --type=csv --headerline --collection=userReviews userReview.csv
+```
 
 ## Shutting Down the Server
 
