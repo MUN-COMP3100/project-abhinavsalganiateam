@@ -33,7 +33,7 @@ const MovieDetails = () => {
       .then((data) => setWatchProviders(data.results.CA));
   };
 
-  const handleAddReview = () => {
+    const handleAddReviewOpen = () => {
     setIsOpen(true);
   };
 
@@ -128,7 +128,7 @@ const MovieDetails = () => {
             <label className="block text-lg font-medium mb-2">Reviews:</label>
             <button
               className="mt-5 px-4 py-2 text-sm font-bold text-white bg-blue-500 rounded-lg hover:bg-blue-700 focus:outline-none focus:shadow-outline"
-              onClick={() => setIsOpen(true)}>
+              onClick={handleAddReviewOpen}>
               Add Review
             </button>
             {reviews ? (
@@ -145,7 +145,8 @@ const MovieDetails = () => {
             )}
           </div>
 
-          {isOpen && <AddReviewModal closeModal={handleAddReviewClose} handleAddReview={handleAddReviewSubmit} />}
+          <AddReviewModal isOpen={isOpen} handleClose={handleAddReviewClose} handleSubmit={handleAddReviewSubmit} />
+
         </div>
       </div>
     </div>
