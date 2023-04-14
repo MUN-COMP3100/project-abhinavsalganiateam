@@ -104,4 +104,30 @@ I have used the following resources to help me with this project:
    - GUI works as expected.
 
 
-## To run the application
+## Running the Application
+
+### Creating the Database on Localhost
+
+To create the database on your localhost, run the following commands in your terminal:
+
+mongoimport --db=IMDB --type=csv --headerline --collection=movies movie.csv
+mongoimport --db=IMDB --type=csv --headerline --collection=users user.csv
+mongoimport --db=IMDB --type=csv --headerline --collection=userReviews userReview.csv
+
+
+### Accessing the Online Database
+
+To access the online database, simply change the import statement in `app.js` for the database to the following `dbOnline.mjs` (which might not work properly).
+
+### Running the Application
+
+To run the application, run the following commands in your terminal:
+
+npm setup # to install all the dependencies
+npm start # to start the server on port 3000
+
+
+## Shutting Down the Server
+
+To shut down the server, press `ctrl+c` in your terminal.
+
