@@ -15,11 +15,15 @@ simply change the import statement in app.js for the database to the following d
 
 ## To run the application
 
-```bash
-npm setup  # to install all the dependencies
-npm start   # to start the server on port 3000
-```
+open the terminal in the project folder 
+install all the dependencies for each client and server side individually 
 
+### client Side 
+```bash
+cd client npm install
+```
+### server Side
+```bash
 ## To run the test
 
 ```bash
