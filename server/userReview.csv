@@ -1,3 +1,3 @@
-userid,movieId,review,rating
+userid,movieId,movie_title,review,rating
 1,The Shawshank Redemption,"One of the greatest movies of all time. The story is compelling, the acting is top-notch, and the cinematography is stunning. A must-watch!",9.5
 2,The Godfather,"An absolute masterpiece that set the standard for all gangster films to come. Brando, Pacino, and Caan give iconic performances that will stay with you forever.",9.2

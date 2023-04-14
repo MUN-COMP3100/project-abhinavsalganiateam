@@ -1,11 +1,44 @@
 import React, { useEffect, useState, useRef } from "react";
-import { useParams, useNavigate } from "react-router-dom";
+import { FaStar } from "react-icons/fa";
+import { useParams, useNavigate, Link } from "react-router-dom";
 
 const ProfilePage = ({ userState, setUserState }) => {
   const { id } = useParams();
   // console.log(`id${id}`);
   const [user, setUser] = useState([]);
   const [showEditModal, setShowEditModal] = useState(false);
+  const [userReviews, setUserReviews] = useState([]);
+  // const [movie, setMovie] = useState({});
+
+  // const getMovieTitle = (movieId) => {
+  //   fetch(`https://api.themoviedb.org/3/movie/${movieId}?api_key=4e44d9029b1270a757cddc766a1bcb63&language=en-US`)
+  //     .then((res) => res.json())
+  //     .then((data) => {
+  //       console.log(data.title);
+  //       return data.title + "";
+  //       // setMovie(data);
+  //     });
+  // };
+
+  const getReviews = (id) => {
+    try {
+      fetch(`http://localhost:3000/userReview/user/${id}`)
+        .then((response) => response.json())
+        .then((result) => {
+          console.log(result);
+          setUserReviews(result);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  useEffect(() => {
+    getReviews(id);
+  }, [id]);
 
   const userNavigate = useNavigate();
   const handleDelete = () => {
@@ -170,7 +203,6 @@ const ProfilePage = ({ userState, setUserState }) => {
                 disabled={isButtonDisabled}>
                 Save
               </button>
-
               <button
                 type="button"
                 className="bg-red-500 text-white px-5 py-2 text-lg rounded-md hover:bg-red-600"
@@ -227,17 +259,27 @@ const ProfilePage = ({ userState, setUserState }) => {
         </div>
         <div className="mb-8">
           <label className="block text-lg font-medium mb-2">Movie Reviews</label>
-          <ul className="text-gray-100 text-lg">
-            {user.reviews && user.reviews.length > 0 ? (
-              user.reviews.map((review, index) => (
-                <li key={index}>
-                  {review.movie}: {review.rating} - {review.comment}
-                </li>
-              ))
-            ) : (
-              <p>No reviews available</p>
-            )}
-          </ul>
+          <div className="text-gray-100 text-lg flex flex-col gap-3">
+            {userReviews.map((review, index) => {
+              return (
+                <div
+                  key={index}
+                  className="bg-gray-800 shadow-xl rounded-lg px-4 py-6 my-4 transition-all duration-200 ease-in-out hover:scale-105">
+                  <Link to={`/movieDetails/${review.movie_id}`} className="font-bold text-xl text-white mb-2">
+                    {review.movie_title}
+                  </Link>
+                  <p className="text-sm text-gray-400 mb-4">{review.review}</p>
+                  <div className="flex justify-between">
+                    {/* <p className="text-gray-400 italic">{review.userid}</p> */}
+                    <div className="flex items-center">
+                      <p className="text-yellow-500 font-semibold mr-2">{review.rating}</p>
+                      <FaStar className="text-amber-400" />
+                    </div>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
         </div>
         <div className={userState ? "flex justify-between" : "hidden"}>
           <button className="bg-blue-500 text-white px-5 py-2 text-lg rounded-md hover:bg-blue-600" onClick={() => setShowEditModal(true)}>

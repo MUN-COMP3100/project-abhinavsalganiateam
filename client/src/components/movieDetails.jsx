@@ -168,7 +168,7 @@ const MovieDetails = ({ user }) => {
             )}
           </div>
 
-          <AddReviewModal isOpen={isOpen} handleClose={handleAddReviewClose} movieid={id} user={user} />
+          <AddReviewModal isOpen={isOpen} handleClose={handleAddReviewClose} movieid={id} movie_title={movie.original_title} user={user} />
         </div>
       </div>
     </div>

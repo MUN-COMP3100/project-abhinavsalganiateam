@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { FaStar } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 
-const AddReviewModal = ({ isOpen, handleClose, user, movieid }) => {
+const AddReviewModal = ({ isOpen, handleClose, user, movieid, movie_title }) => {
   const [username, setUsername] = useState("");
   const [review, setReview] = useState("");
   const [rating, setRating] = useState("");
@@ -30,6 +30,7 @@ const AddReviewModal = ({ isOpen, handleClose, user, movieid }) => {
     const reviewData = {
       userid: user.userid,
       movie_id: movieid,
+      movie_title: movie_title,
       review: review,
       rating: rating,
     };

@@ -22,7 +22,7 @@ export async function GetReviewByUser(req, res) {
 }
 
 export async function AddReview(req, res) {
-  let review = new UserReviewDTO(req.body.userid, req.body.movie_id, req.body.review, req.body.rating);
+  let review = new UserReviewDTO(req.body.userid, req.body.movie_id, req.body.movie_title, req.body.review, req.body.rating);
   let result = await userReviewBusiness.addReview(review);
   res.json(result);
 }
