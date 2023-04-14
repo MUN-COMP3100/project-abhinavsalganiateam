@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
 import AddReviewModal from "./addReviewModal";
+import { getMovieReviews} from "./movieReviews";
 
 const MovieDetails = () => {
   const { id } = useParams();
@@ -21,11 +22,17 @@ const MovieDetails = () => {
       .then((data) => setMovie(data));
   };
 
-  const getMovieReviews = (movieId) => {
-    fetch(`https://api.themoviedb.org/3/movie/${movieId}/reviews?api_key=4e44d9029b1270a757cddc766a1bcb63&language=en-US&page=1`)
-      .then((res) => res.json())
-      .then((data) => setReviews(data.results));
+  const getMovieReviews = async (movieId) => {
+    try {
+      const response = await fetch(`https://api.themoviedb.org/3/movie/${movieId}/reviews?api_key=4e44d9029b1270a757cddc766a1bcb63&language=en-US&page=1`)
+      const data = await response.json();
+      setReviews(data.results);
+    } catch (err) {
+      console.log(err);
+      setReviews([]);
+    }
   };
+  
 
   const getWatchProviders = (movieId) => {
     fetch(`https://api.themoviedb.org/3/movie/${movieId}/watch/providers?api_key=4e44d9029b1270a757cddc766a1bcb63`)
@@ -42,10 +49,24 @@ const MovieDetails = () => {
   };
 
   const handleAddReviewSubmit = (review) => {
-    console.log(`Username: ${review.username}, Review: ${review.review}`);
-    setIsOpen(false);
-    setReviews((prevReviews) => [{ author: review.username, content: review.review }, ...prevReviews]);
+    fetch('/reviews', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(review)
+    })
+    .then(response => response.json())
+    .then(data => {
+      console.log(`Username: ${data.username}, Review: ${data.review}`);
+      setIsOpen(false);
+      getMovieReviews(id); // fetch reviews again to update the list
+    })
+    .catch(error => {
+      console.error('Error:', error);
+    });
   };
+  
 
   return (
     <div className="min-h-screen w-full bg-[#1d1d1f] flex flex-col items-center justify-center">

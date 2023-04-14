@@ -1,23 +1,32 @@
 import React, { useState } from "react";
 
-const AddReviewModal = ({ isOpen, handleClose, handleSubmit }) => {
+const AddReviewModal = ({ isOpen, handleClose }) => {
   const [username, setUsername] = useState("");
   const [review, setReview] = useState("");
 
   const handleFormSubmit = (e) => {
     e.preventDefault();
-    handleSubmit({ username, review });
-    setUsername("");
-    setReview("");
+    fetch("/api/reviews", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ username, review })
+    })
+      .then((res) => res.json())
+      .then(() => {
+        setUsername("");
+        setReview("");
+        handleClose();
+      })
+      .catch((err) => console.log(err));
   };
 
   const handleClearForm = () => {
     setUsername("");
     setReview("");
-    };
+  };
 
   return (
-    <div 
+    <div
       className={`${
         isOpen ? "fixed inset-0 z-50 overflow-y-auto" : "hidden"
       } flex justify-center items-center bg-opacity-50 bg-gray-900`}
@@ -62,10 +71,10 @@ const AddReviewModal = ({ isOpen, handleClose, handleSubmit }) => {
             <button
               type="button"
               className="py-2 px-4 bg-gray-600 rounded-md text-white mr-2"
-                onClick={() => {
-                    handleClose();
-                    handleClearForm();
-                }}
+              onClick={() => {
+                handleClose();
+                handleClearForm();
+              }}
             >
               Close
             </button>
