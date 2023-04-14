@@ -22,31 +22,37 @@ Our entertainment platform is a one-stop-shop for movie buffs, TV show enthusias
 
 ## Project Feature Table
 
+### Server side features - Only first 6 to be implemented
+
 | Num | Name                    | Description                                                                                                                                                    | End    | Deliverable | Who     |
 | --- | ----------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------ | ----------- | ------- |
-| 1   | Movie Database          | Create a database to store movie and TV show information, including ratings, cast                                                                              | server | yes         | Rashod  |
-| 2   | Search Engine           | Implement a search engine that can search through the movie database based on user input                                                                       | server | yes         | Abhinav |
-| 3   | User Reviews Database   | Create a database to store user reviews and ratings                                                                                                            | server | yes         | Rashod  |
-| 4   | User Authentication     | Implement user authentication to ensure only registered users can leave reviews and save movies                                                                | server | yes         | Rashod  |
-| 5   | Content Moderation      | Implement a system to moderate user reviews and prevent spam and inappropriate content                                                                         | server | yes         | Abhinav |
-| 6   | API Integration         | Integrate with third-party APIs to access additional movie and TV show data                                                                                    | server | yes         | Abhinav |
+| 1   | API Integration          | We have used the third party API to get the data from the server. The API is used to get the data from the server and then the data is used to display the data on the client side.                                                                              | server | yes         | Rashod  |
+| 2   | Popular and Upcoming Movies/Tv Shows          | We have used the popular and upcoming movies to display the popular and upcoming movies. The user can see the popular and upcoming movies on the home page.                                                                       | server | yes         | Abhinav |
+| 3   | User Authentication    | We have used the user authentication to authenticate the user. The user can login to the application using the username and password. The user can also register to the application using the username and password.                                                                                  | server | yes         | Rashod  |
+| 4   | User Profile     | We have used the mongoDB database to store the user profiles. The user can add and edit the profile to the database and the user can also delete the profile from the database.                                                                | server | yes         | Rashod  |
+| 5   | User Reviews Database      | We have used the user reviews database to store the user reviews. The user can add the reviews to the database and the user can also delete the reviews from the database.                                                                         | server | yes         | Abhinav |
+| 6   | Search Engine         | We have used the search engine to search the movies. The user can search the movies using the search engine.                                                                                    | server | yes         | Abhinav |
 | 7   | Scalability             | Design the system to be scalable, allowing for additional features and increased traffic                                                                       | server | yes         | Rashod  |
 | 8   | Location-based services | This feature will allow users to find the nearest movie theater or streaming platform to watch their desired movie or TV show based on their current location. | server | yes         | Abhinav |
 
 <br>
 
+### Client side features - Only first 6 to be implemented
+
 | Num | Name                 | Description                                                                                      | End Date | Deliverable | Who     |
 | --- | -------------------- | ------------------------------------------------------------------------------------------------ | -------- | ----------- | ------- |
-| 1   | Movie search         | Implement a search function that allows users to search for movies based on keywords or filters. | client   | yes         | Abhinav |
-| 2   | Movie details        | Display detailed information about each movie, including synopsis, ratings, cast, and crew.      | client   | yes         | Rashod  |
-| 3   | User reviews         | Allow users to leave reviews and ratings for movies and TV shows.                                | client   | yes         | Abhinav |
-| 4   | Watchlist            | Allow users to save movies and TV shows to a watchlist for future viewing.                       | client   | yes         | Rashod  |
-| 5   | Popular movies       | Show a list of popular movies and TV shows based on user ratings and trends.                     | client   | yes         | Rashod  |
-| 6   | Featured celebrities | Display information about featured celebrities, including biographies, filmography, and awards.  | client   | yes         | Abhinav |
-| 7   | User profiles        | Allow users to create and manage their profiles, including watch history and preferences.        | client   | yes         | Rashod  |
-| 8   | Sign in/sign up      | Implement a sign-in/sign-up system that allows users to create and manage their accounts.        | client   | yes         | Abhinav |
+| 1   | Movie search         | The user can search the movies using the search engine. | client   | yes         | Abhinav |
+| 2   | Movie Details        | The user can click on movie cards and see the details of the movie.      | client   | yes         | Rashod  |
+| 3   | User Reviews         | The user can see the Add Review button after clicking on a movie card. The user can see the reviews and add reviews using the Add Review button. When the user clicks on the Add Review button, the user can see the form to add the review. The user can add the review and see the review on the page.                                | client   | yes         | Abhinav |
+| 4   | Popular Movies/Upcoming movies            | The user can see the popular and upcoming movies on the home page.                       | client   | yes         | Rashod  |
+| 5   | User Profiles        | After clicking Log in/Sign up button, the user can see the form to add the profile. The user can add the profile and see the profile on the page. The user can also delete the profile.                     | client   | yes         | Rashod  |
+| 6   | Sign in/sign up  | The user can login to the application using the username and password. The user can also register to the application using the username and password.  | client   | yes         | Abhinav |
+| 7   | Watchlist        | Allow users to save movies and TV shows to a watchlist for future viewing.        | client   | yes         | Rashod  |
+| 8   | Featured celebrities     | Display information about featured celebrities, including biographies, filmography, and awards.        | client   | yes         | Abhinav |
 
 <br>
+
+### Extra features for client and server side
 
 | Num | Name                     | Description                                                                                                                         | End    | Deliverable | Who |
 | --- | ------------------------ | ----------------------------------------------------------------------------------------------------------------------------------- | ------ | ----------- | --- |

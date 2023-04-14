@@ -2,7 +2,7 @@
 
 ## Project Proposal
 
-Please see the project proposal document in the server folder.
+Please see the updated project proposal document in the Proposal folder.
 
 ## Project Video
 
