@@ -2,20 +2,32 @@ import React, { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
 import AddReviewModal from "./addReviewModal";
 import { getMovieReviews } from "./movieReviews";
+import { FaStar } from "react-icons/fa";
 
 const MovieDetails = ({ user }) => {
-  console.log(user);
+  // console.log(user);
   const { id } = useParams();
   const [movie, setMovie] = useState({});
   const [isOpen, setIsOpen] = useState(false);
   const [reviews, setReviews] = useState([]);
   const [watchProviders, setWatchProviders] = useState(null);
+  const [userReview, setUserReview] = useState([]);
+
+  const getReviewsfromDB = async (id) => {
+    fetch(`http://localhost:3000/userReview/movie/${id}`)
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        setUserReview(data);
+      });
+  };
 
   useEffect(() => {
     getMovieDetails(id);
     getMovieReviews(id);
     getWatchProviders(id);
-  }, [id]);
+    getReviewsfromDB(id);
+  }, [id, userReview]);
 
   const getMovieDetails = (movieId) => {
     fetch(`https://api.themoviedb.org/3/movie/${movieId}?api_key=4e44d9029b1270a757cddc766a1bcb63&language=en-US`)
@@ -154,18 +166,26 @@ const MovieDetails = ({ user }) => {
               onClick={handleAddReviewOpen}>
               Add Review
             </button>
-            {reviews ? (
-              <div className="flex flex-col lg:flex-row h-[550px] lg:h-[100%] gap-6 mt-5 overflow-scroll scrollbar-hide snap-y lg:snap-x snap-proximity">
-                {reviews.map((review) => (
-                  <div key={review.id} className="bg-gray-800 rounded-lg p-4 w-full scale-[85%] snap-start">
+            <div className="flex flex-col lg:flex-row h-[550px] lg:h-[100%] gap-6 mt-5 overflow-scroll scrollbar-hide snap-y lg:snap-x snap-proximity">
+              {reviews &&
+                reviews.map((review, index) => (
+                  <div key={index} className="bg-gray-800 rounded-lg p-4 w-full scale-[85%] snap-start">
                     <p className="text-lg font-semibold text-gray-100">{review.author}</p>
                     <p className="text-gray-300 text-md p-2">{review.content}</p>
                   </div>
                 ))}
-              </div>
-            ) : (
-              <p className="text-gray-100">Be the first to review this movie!</p>
-            )}
+              {userReview &&
+                userReview.map((review, index) => (
+                  <div key={index} className="bg-gray-800 rounded-lg p-4 w-full scale-[85%] snap-start">
+                    <p className="text-lg font-semibold text-gray-100">{review.userid}</p>
+                    <p className="text-gray-300 text-md p-2">{review.review}</p>
+                    <p className="text-gray-300 text-md p-2 flex justify-center items-center w-[100px]">
+                      {review.rating} / 10
+                      <FaStar className="text-amber-500" />
+                    </p>
+                  </div>
+                ))}
+            </div>
           </div>
 
           <AddReviewModal isOpen={isOpen} handleClose={handleAddReviewClose} movieid={id} movie_title={movie.original_title} user={user} />

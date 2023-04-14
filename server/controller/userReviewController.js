@@ -10,7 +10,7 @@ export async function getAllReviews(req, res) {
 }
 
 export async function GetReviewByMovie(req, res) {
-  let id = req.params.movie_id;
+  let id = req.params.movieid;
   let reviews = await userReviewBusiness.getReviewByMovie(id);
   res.send(reviews);
 }
