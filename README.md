@@ -15,7 +15,7 @@ I have used the following resources to help me with this project:
 - [React Router](https://reactrouter.com/web/guides/quick-start)
 - [React Bootstrap Modal](https://react-bootstrap.github.io/components/modal/)
 - [Movie Api](https://www.themoviedb.org/documentation/api)
-- contacts-v4 app as the base for the project [contacts-v4](http://www.cs.mun.ca/~brown/3100/Soares/Week5/contacts-app-v4.zip)
+- contacts-v4 app as the base for the server side project [contacts-v4](http://www.cs.mun.ca/~brown/3100/Soares/Week5/contacts-app-v4.zip)
 
 ## Server-side Features
 
