@@ -15,22 +15,130 @@ I have used the following resources to help me with this project:
 ## Server side features
 
 1. API Integration - We have used the third party API to get the data from the server. The API is used to get the data from the server and then the data is used to display the data on the client side. We have used the following APIs:
+
+Working - Yes
+
+Code can be found in - home.jsx, movieList.jsx, movies.jsx, tvList.jsx, tvShows.jsx
+
+Access/Usage - The marker can access the API using the API key.
+
+Tests - The API should return the data in the correct format and the data should be visible on the client side.
     
-2. User Authentication - We have used the user authentication to authenticate the user. The user can login to the application using the username and password. The user can also register to the application using the username and password.
+2. Popular and Upcoming Movies/Tv Shows - We have used the popular and upcoming movies to display the popular and upcoming movies. The user can see the popular and upcoming movies on the home page.
 
-3. 
+Working - Yes
 
-4.
-5.
-6.
+Code can be found in - home.jsx, movieList.jsx, movies.jsx and tvList.jsx, tvShows.jsx
 
+Access/Usage - The marker can access the popular and upcoming movies using the API key.
+
+Tests - The API should return the data in the correct format and the data should be visible on the client side.
+
+3. User Authentication - We have used the user authentication to authenticate the user. The user can login to the application using the username and password. The user can also register to the application using the username and password.
+
+Working - Yes
+
+Code can be found in - authPage.jsx
+
+Access/Usage - The marker can access the user authentication using the username and password.
+
+Tests - The user should be able to login to the application using the username and password. The user should be able to register to the application using the username and password.
+
+4. User Profile - We have used the user profile to store the user profile. The user can add the profile to the database and the user can also delete the profile from the database.
+
+Working - Yes
+
+Code can be found in - profilePage.jsx
+
+Access/Usage - The marker can access the user profile using the username and password.
+
+Tests - The user should be able to add the profile to the database using the username and password. The user should be able to delete the profile from the database using the username and password.
+
+5. User Reviews Database - We have used the user reviews database to store the user reviews. The user can add the reviews to the database and the user can also delete the reviews from the database.
+
+Working - No
+
+Code can be found in - movieReviews.jsx
+
+Access/Usage - The marker can see the code and reasonably grade the feature.
+
+6. Search Engine - We have used the search engine to search the movies. The user can search the movies using the search engine.
+
+Working - No
+
+Code can be found in - searchBar.jsx
+
+Access/Usage - The marker can check the code and reasonably grade the feature.
 ## Client side features
 
-1.
-2.
-3.
-4.
-5.
-6.
+1. Movie Details - The user can click on movie cards and see the details of the movie.
+
+Working - Yes
+
+Code can be found in - movieDetails.jsx
+
+Access/Usage - The marker can click on the movie card and see the details of the movie.
+
+Tests - The user should be able to see the details of the movie after clicking on the movie card.
+
+GUI works as expected.
+
+2. Movie Search - The user can search the movies using the search engine.
+
+Working - Yes, client side only
+
+Code can be found in - searchBar.jsx
+
+Access/Usage - The marker can search the movies using the search engine.
+
+3. Popular Movies/Upcoming movies - The user can see the popular and upcoming movies on the home page.
+
+Working - Yes
+
+Code can be found in - home.jsx, movieList.jsx, movies.jsx
+
+Access/Usage - The marker can see the popular movies on the home page.
+
+GUI works as expected.
+
+4. User Reviews - The user can add the reviews to the database and the user can also delete the reviews from the database.
+
+Working - Client side only
+
+Code can be found in - movieReviews.jsx
+
+Access/Usage - The marker can see the code and reasonably grade the feature.
+
+4. User Profiles - The user can add the profile to the database and the user can also delete the profile from the database.
+
+Working - Yes
+
+Code can be found in - profilePage.jsx
+
+Access/Usage - The marker can make a profile and log in.
+
+Tests - The user should be able to add the profile using username and password and also be able to delete the profile.
+
+GUI works as expected.
+
+5. Sign in/ Sign up - The user can login to the application using the username and password. The user can also register to the application using the username and password.
+
+Working - Yes
+
+Code can be found in - authPage.jsx
+
+Access/Usage - The marker can login to the application using the username and password. The marker can also register to the application using the username and password.
+
+Tests - The user should be able to login to the application using the username and password. The user should be able to register to the application using the username and password.
+
+6. Watch it here - After clicking on the movie card, the user can see watch it here to help user to watch the movie.
+
+Working - Yes
+
+Code can be found in - movieDetails.jsx
+
+Access/Usage - The marker can click on the movie card and see the details of the movie.
+
+Tests - The user should be able to see the watch it here after clicking on the movie card.
 
 ## To run the application
