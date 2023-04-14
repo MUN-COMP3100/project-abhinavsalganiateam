@@ -6,7 +6,7 @@ Please see the updated project proposal document in the Proposal folder.
 
 ## Project Video
 
-Please see the project video.
+[watch the video](https://drive.google.com/file/d/1s-_1bF-kED16SI2QCYA8iDw5dSkGDs4Z/view?usp=share_link)
 
 ## Attribution
 
