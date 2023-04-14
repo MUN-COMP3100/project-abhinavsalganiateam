@@ -17,7 +17,7 @@ const Home = () => {
     <div className="flex bg-inherit w-full">
       <Carousel showThumbs={false} autoPlay={true} transitionTime={3} infiniteLoop={true} showStatus={false}>
         {popularMovies.map((movie, index) => (
-          <Link key={index} to={`/movie/${movie.id}`}>
+          <Link key={index} to={`/movieDetails/${movie.id}`}>
             <div className="w-full flex items-center justify-center">
               <div className="h-[800px]">
                 <img

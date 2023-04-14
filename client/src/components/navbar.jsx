@@ -27,7 +27,9 @@ const Navbar = ({ user, onLogout }) => {
   return (
     <div className="fixed w-full h-[80px] flex justify-between items-center px-4 bg-[#1d1d1f] text-gray-50 z-10 ">
       <div className="z-1">
-        <h1>EntertainMate</h1>
+        <Link to="/">
+          <h1>EntertainMate</h1>
+        </Link>
       </div>
       <div className="hidden md:flex flex-row">
         <SearchBar />
