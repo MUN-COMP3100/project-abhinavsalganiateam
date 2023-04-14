@@ -1,9 +1,8 @@
-import React from "react";
-import { Modal, Button, Form } from "react-bootstrap";
+import React, { useState } from "react";
 
 const AddReviewModal = ({ isOpen, handleClose, handleSubmit }) => {
-  const [username, setUsername] = React.useState("");
-  const [review, setReview] = React.useState("");
+  const [username, setUsername] = useState("");
+  const [review, setReview] = useState("");
 
   const handleFormSubmit = (e) => {
     e.preventDefault();
@@ -12,44 +11,74 @@ const AddReviewModal = ({ isOpen, handleClose, handleSubmit }) => {
     setReview("");
   };
 
+  const handleClearForm = () => {
+    setUsername("");
+    setReview("");
+    };
+
   return (
-    <Modal show={isOpen} onHide={handleClose}>
-      <Modal.Header closeButton>
-        <Modal.Title>Add Review</Modal.Title>
-      </Modal.Header>
-      <Modal.Body>
-        <Form onSubmit={handleFormSubmit}>
-          <Form.Group className="mb-3" controlId="formUsername">
-            <Form.Label>Username</Form.Label>
-            <Form.Control
+    <div 
+      className={`${
+        isOpen ? "fixed inset-0 z-50 overflow-y-auto" : "hidden"
+      } flex justify-center items-center bg-opacity-50 bg-gray-900`}
+    >
+      <div className="bg-gray-700 rounded-md p-4">
+        <h2 className="text-2xl font-bold mb-4 text-center">Add Review</h2>
+        <form onSubmit={handleFormSubmit}>
+          <div className="mb-4">
+            <label
+              htmlFor="username"
+              className="block text-gray-300 font-bold mb-2"
+            >
+              Username
+            </label>
+            <input
+              id="username"
               type="text"
+              className="border-gray-500 rounded-md py-2 px-3 w-full bg-gray-800"
               placeholder="Enter your username"
               value={username}
               onChange={(e) => setUsername(e.target.value)}
               required
             />
-          </Form.Group>
-          <Form.Group className="mb-3" controlId="formReview">
-            <Form.Label>Review</Form.Label>
-            <Form.Control
-              as="textarea"
+          </div>
+          <div className="mb-4">
+            <label
+              htmlFor="review"
+              className="block text-gray-300 font-bold mb-2"
+            >
+              Review
+            </label>
+            <textarea
+              id="review"
+              className="border-gray-500 rounded-md py-2 px-3 w-full h-24 bg-gray-800 resize-none"
               placeholder="Write your review"
               value={review}
               onChange={(e) => setReview(e.target.value)}
               required
             />
-          </Form.Group>
-          <div className="d-flex justify-content-end">
-            <Button variant="secondary" className="me-2" onClick={handleClose}>
-              Close
-            </Button>
-            <Button variant="primary" type="submit">
-              Submit
-            </Button>
           </div>
-        </Form>
-      </Modal.Body>
-    </Modal>
+          <div className="flex justify-end">
+            <button
+              type="button"
+              className="py-2 px-4 bg-gray-600 rounded-md text-white mr-2"
+                onClick={() => {
+                    handleClose();
+                    handleClearForm();
+                }}
+            >
+              Close
+            </button>
+            <button
+              type="submit"
+              className="py-2 px-4 bg-green-500 rounded-md text-white"
+            >
+              Submit
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
   );
 };
 
