@@ -88,7 +88,7 @@ I have used the following resources to help me with this project:
 4. **User Reviews** - User is able to add reviews to each movie on movie details page only if user is logged in, to access movie details page click on the movie card.
 
    - Working - yes
-   - Code can be found in - `movieReviews.jsx`,
+   - Code can be found in - `movieReviews.jsx`, `addReviewModal.jsx`
    - Access/Usage - The marker can add the review to the movie after clicking on the movie card if the user is logged in.
    - Tests - The user should be able to see the Add Review button after clicking on a movie card. The user should be able to see the reviews and add reviews using the Add Review button. The user should be able to add the review and see the review on the page. GUI works as expected.
 
@@ -151,6 +151,7 @@ now you can use the application
 - The server and client side are running on different ports, so you need to run both the server and client side to use the application.
 - you need a internet connection to use the application since we are using the TMDB API to fetch the movies.
 - The searchbar is implemented in the both client side and server side , retrieving the data from server is working but couldn't properly connect it to the client side. so you can see the searchbar in the client side but it is not working.
+- all the components are in the src folder in the client side.
 
 ### Creating the Database on Localhost
 
