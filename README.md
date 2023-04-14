@@ -6,7 +6,8 @@ Please see the updated project proposal document in the Proposal folder.
 
 ## Project Video
 
-[watch the video](https://drive.google.com/file/d/1s-_1bF-kED16SI2QCYA8iDw5dSkGDs4Z/view?usp=share_link)
+[project video mov file](https://drive.google.com/file/d/1s-_1bF-kED16SI2QCYA8iDw5dSkGDs4Z/view?usp=share_link)
+[project video mp4 file](https://drive.google.com/file/d/1NWsQ2_Ejt11LDZCB6OWFJS6788SsL6Zl/view?usp=sharing)
 
 ## Attribution
 
