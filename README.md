@@ -36,27 +36,27 @@ I have used the following resources to help me with this project:
 3. **User Authentication** - We have used the user authentication to authenticate the user. The user can login to the application using the username and password. The user can also register to the application using the username and password.
 
    - Working - Yes
-   - Code can be found in - `authPage.jsx`
+   - Code can be found in - `userController.js`
    - Access/Usage - The marker can access the user authentication using the username and password.
    - Tests - The user should be able to login to the application using the username and password. The user should be able to register to the application using the username and password.
 
 4. **User Profile** - We have used the MongoDB database to store the user profiles. The user can add and edit the profile to the database, and the user can also delete the profile from the database.
 
    - Working - Yes
-   - Code can be found in - `profilePage.jsx`
+   - Code can be found in - `userController.js`
    - Access/Usage - The marker can access the user profile using the username and password.
    - Tests - The user should be able to add the profile to the database using the username and password. The user should be able to delete the profile from the database using the username and password. To test it properly, you can create a new profile using Sign up and then delete the profile using the Delete button.
 
 5. **User Reviews Database** - We have used the user reviews database to store the user reviews. The user can add the reviews to the database, and user can see all the reviews user has added in the past in the user profile page.
 
    - Working - yes
-   - Code can be found in - `movieReviews.jsx`
+   - Code can be found in - `userReviesController.js`
    - Access/Usage - The marker can see the code and reasonably grade the feature.
 
 6. **Search Engine** - We have used the search engine to search the movies. The user can search the movies using the search engine.
 
-   - Working - No
-   - Code can be found in - `searchBar.jsx`
+   - Working - yes
+   - Code can be found in - `movieController.js`
    - Access/Usage - The marker can check the code and reasonably grade the feature.
 
 ## Client-side Features
@@ -150,6 +150,7 @@ now you can use the application
 - To add Reviews to the movies , you need to create a new account.
 - The server and client side are running on different ports, so you need to run both the server and client side to use the application.
 - you need a internet connection to use the application since we are using the TMDB API to fetch the movies.
+- The searchbar is implemented in the both client side and server side , retrieving the data from server is working but couldn't properly connect it to the client side. so you can see the searchbar in the client side but it is not working.
 
 ### Creating the Database on Localhost
 
